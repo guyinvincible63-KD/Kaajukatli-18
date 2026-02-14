@@ -52,7 +52,7 @@
             <p style="letter-spacing: 2px; border: 1px dashed #fff; padding: 15px; background: rgba(0,0,0,0.3);">
                 23-8-15 &nbsp; 9-19 &nbsp; 25-15-21-18 <br> 19-15-21-12-13-1-20-5 ?
             </p>
-            <p style="font-size: 0.8em; color: #ddd; margin-bottom: 10px;"><i>(HINT: A=1, B=2... Answer in CAPITAL)</i></p>
+            <p style="font-size: 0.8em; color: #ddd; margin-bottom: 10px;"><i>(HINT: Answer in CAPITAL, No AI for you, Deepika! 😉)</i></p>
             <input type="text" id="cipherInput" placeholder="DECODE HERE...">
             <br><button class="btn" onclick="checkCipher()">Verify & Enter ✨</button>
             <p id="cipherError" class="hidden" style="color: #ff8585; margin-top: 10px;">That's not it! Try again, love. ❤️</p>
@@ -69,7 +69,7 @@
 
     <div id="categoryMenu" class="full-screen hidden">
         <h2 class="glow" style="margin-bottom: 30px;">Choose a Storyline ✨</h2>
-        <button class="btn" onclick="startSection(1)">✨ The Goddess Era</button>
+        <button class="btn" onclick="startSection(1)">✨ The Classic Beauty</button>
         <button class="btn" onclick="toggleLock()">😜 Little Miss Dramebaaz</button>
         <button class="btn" onclick="startSection(3)">👩‍❤️‍👨 The Soulmate Saga</button>
         
@@ -103,141 +103,138 @@
 
     <audio id="bgMusic" loop><source src="birthday.mp3" type="audio/mpeg"></audio>
 
-    <script>
-        // Data Structure
-        const sections = {
-            1: [
-                {img: "Deepika1.jpg", msg: "Beginning of yours journey 🌱"},
-                {img: "Deepika2.jpg", msg: "My favorite smile in the whole world 😍"},
-                {img: "Deepika3.jpg", msg: "Just elegant ✨"},
-                {img: "Deepika4.jpg", msg: "ssshhh.... you are mine 🤫❤️"},
-                {img: "Deepika5.jpg", msg: "Doraemon 🐱‍🚀"},
-                {img: "Deepika6.jpg", msg: "Undoubtedly, you are the most beautiful girl 👑"}
-            ],
-            2: [
-                {img: "Deepika7.jpg", msg: "Kis chiz ki talash h - m kar du puri 🔍💖"},
-                {img: "Deepika8.jpg", msg: "Kitni khush h yrr - aisi hi reh 😊🧿"},
-                {img: "Deepika9.jpg", msg: "Gehrii sochh.... - pakka mere baare m hi soch rhi hogi 🤔💭"},
-                {img: "Deepika10.jpg", msg: "Chhota Don 😎👊"},
-                {img: "Deepika11.jpg", msg: "In my control now.... chin tapak dum dum 🪄😈"},
-                {img: "Deepika.jpg", msg: "My chubby princess 😘👑"}
-            ],
-            3: [
-                {img: "Deepika12.jpg", msg: "Holding you - just a phenomenal experience 🤝💞"},
-                {img: "Deepika13.jpg", msg: "Looking into each other - just like how we see our future 👁️🌅"},
-                {img: "Deepika14.jpg", msg: "An invisible bluetooth we have 📶💝"},
-                {img: "Deepika15.jpg", msg: "Just you and me 👩‍❤️‍👨"},
-                {img: "Deepika16.jpg", msg: "The deadly duoo 🔥⚔️"},
-                {img: "Deepika17.jpg", msg: "Made for each other (rooting for a together future) ♾️🌹"}
-            ]
-        };
-
-        const nextButtonTexts = ["And then? ➔", "One more? ✨", "Look at this... 💖", "Keep going ➔", "Next chapter...", "See more! 🔥", "Tell me more ➔"];
-        let currentSectionId = 0, currentIndex = 0;
-
-        function checkCipher() {
-            const input = document.getElementById('cipherInput').value.trim().toUpperCase();
-            if(input === "KARTIK") {
-                document.getElementById('welcomeScreen').style.opacity = "0";
-                setTimeout(() => {
-                    document.getElementById('welcomeScreen').classList.add('hidden');
-                    const success = document.getElementById('successScreen');
-                    success.classList.remove('hidden');
-                    setTimeout(() => success.style.opacity = "1", 50);
-                    document.getElementById('bgMusic').play();
                     
+                    
+<script>
+    const sections = {
+        1: [
+            {img: "Deepika1.jpg", msg: "Beginning of yours journey 🌱"},
+            {img: "Deepika2.jpg", msg: "My favorite smile in the whole world 😌💗"},
+            {img: "Deepika3.jpg", msg: "Just elegant ✨"},
+            {img: "Deepika4.jpg", msg: "ssshhh.... you are mine 🤫❤️"},
+            {img: "Deepika5.jpg", msg: "Doraemon 🐱‍🚀"},
+            {img: "Deepika6.jpg", msg: "Undoubtedly, you are the most beautiful girl 👑"}
+        ],
+        2: [
+            {img: "Deepika7.jpg", msg: " Khooyi si  🔍💖"},
+            {img: "Deepika8.jpg", msg: "Kitni khush h yrr - aisi hi reh 😊🧿"},
+            {img: "Deepika9.jpg", msg: "Gehrii sochh.... - pakka mere baare m hi soch rhi hogi 🤔💭"},
+            {img: "Deepika10.jpg", msg: "Chhota Don 😎👊"},
+            {img: "Deepika11.jpg", msg: "In my control now.... chin tapak dum dum 🪄😈"},
+            {img: "Deepika.jpg", msg: "My chubby princess 🍑👑"}
+        ],
+        3: [
+            {img: "Deepika12.jpg", msg: "Holding you - just a phenomenal experience 🤝💞"},
+            {img: "Deepika13.jpg", msg: "Looking into each other - just like how we see our future 👁️🌅"},
+            {img: "Deepika14.jpg", msg: "An invisible bluetooth we have 📶💝"},
+            {img: "Deepika15.jpg", msg: "Just you and me 👩‍❤️‍👨"},
+            {img: "Deepika16.jpg", msg: "The deadly duoo 🔥⚔️"},
+            {img: "Deepika17.jpg", msg: "Made for each other (rooting for a together future) ♾️🌹"}
+        ]
+    };
+
+    let currentSectionId = 0, currentIndex = 0;
+    // Track what has been seen to prevent loops
+    let visited = { 1: false, 2: false, 3: false };
+
+    function checkCipher() {
+        if(document.getElementById('cipherInput').value.trim().toUpperCase() === "KARTIK") {
+            document.getElementById('welcomeScreen').style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById('welcomeScreen').classList.add('hidden');
+                const success = document.getElementById('successScreen');
+                success.classList.remove('hidden');
+                setTimeout(() => success.style.opacity = "1", 50);
+                document.getElementById('bgMusic').play();
+                setTimeout(() => {
+                    success.style.opacity = "0";
                     setTimeout(() => {
-                        success.style.opacity = "0";
-                        setTimeout(() => {
-                            success.classList.add('hidden');
-                            document.getElementById('categoryMenu').classList.remove('hidden');
-                        }, 1000);
-                    }, 5000);
-                }, 1000);
-            } else { document.getElementById('cipherError').classList.remove('hidden'); }
-        }
+                        success.classList.add('hidden');
+                        document.getElementById('categoryMenu').classList.remove('hidden');
+                    }, 1000);
+                }, 4000);
+            }, 1000);
+        } else { document.getElementById('cipherError').classList.remove('hidden'); }
+    }
 
-        function toggleLock() { document.getElementById('funnyLock').classList.toggle('hidden'); }
+    function toggleLock() { document.getElementById('funnyLock').classList.toggle('hidden'); }
+    
+    function checkFunnyPass() {
+        if(document.getElementById('funnyPass').value === "Let's Deep Dive") startSection(2);
+        else alert("Incorrect code!");
+    }
+
+    function startSection(id) {
+        currentSectionId = id; currentIndex = 0; 
+        visited[id] = true; // Mark as seen
+        document.getElementById('categoryMenu').classList.add('hidden');
+        document.getElementById('navPopup').classList.add('hidden');
+        document.getElementById('slideshowContainer').classList.remove('hidden');
+        updateSlide();
+    }
+
+    function updateSlide() {
+        const data = sections[currentSectionId][currentIndex];
+        const img = document.getElementById('currentSlideImg');
+        img.src = data.img;
+        document.getElementById('currentCaption').innerText = data.msg;
+        img.classList.remove('fade-slide'); void img.offsetWidth; img.classList.add('fade-slide');
+    }
+
+    function nextSlide() {
+        currentIndex++;
+        if(currentIndex < sections[currentSectionId].length) updateSlide();
+        else handleSectionEnd();
+    }
+
+    function handleSectionEnd() {
+        document.getElementById('slideshowContainer').classList.add('hidden');
+        const popup = document.getElementById('navPopup');
+        const options = document.getElementById('popupOptions');
+        options.innerHTML = "";
+        popup.classList.remove('hidden');
+
+        // Logic: Only show buttons for sections she HASN'T seen yet
+        if (!visited[1]) addOption("✨ The Goddess Era", () => startSection(1));
+        if (!visited[2]) addOption("😜 Little Miss Dramebaaz", () => {
+            popup.classList.add('hidden');
+            document.getElementById('categoryMenu').classList.remove('hidden');
+            document.getElementById('funnyLock').classList.remove('hidden');
+        });
+        if (!visited[3]) addOption("👩‍❤️‍👨 The Soulmate Saga", () => startSection(3));
         
-        function checkFunnyPass() {
-            if(document.getElementById('funnyPass').value === "Let's Deep Dive") {
-                startSection(2);
-            } else { alert("Incorrect code. Ask Deepika! 😉"); }
+        // Always allow proceeding to the main celebration
+        addOption("🚀 Launch Into Chapter 18", launchHome);
+    }
+
+    function addOption(text, callback) {
+        const b = document.createElement('button');
+        b.className = "btn"; b.innerText = text; b.onclick = callback;
+        document.getElementById('popupOptions').appendChild(b);
+    }
+
+    function launchHome() {
+        document.getElementById('navPopup').classList.add('hidden');
+        const main = document.getElementById('mainContent');
+        main.style.display = "block";
+        setTimeout(() => { main.style.opacity = "1"; typeWriter(); }, 50);
+    }
+
+    // Countdown and Typing logic remains the same...
+    const bdayDate = new Date("February 16, 2026 00:00:00").getTime();
+    setInterval(() => {
+        const d = bdayDate - new Date().getTime();
+        document.getElementById("countdown").innerHTML = Math.floor(d/(1000*60*60*24)) + "d : " + Math.floor((d%(1000*60*60*24))/(1000*60*60)) + "h : " + Math.floor((d%(1000*60*60))/(1000*60)) + "m : " + Math.floor((d%(1000*60))/1000) + "s Until 16th Feb ❤️";
+    }, 1000);
+
+    const typingText = "You are not just turning 18... you are stepping into your strength, your dreams, and your incredible light. Happy Birthday, Soulmate! ❤️";
+    let charIndex = 0;
+    function typeWriter() {
+        if (charIndex < typingText.length) {
+            document.getElementById("typing").innerHTML += typingText.charAt(charIndex);
+            charIndex++; setTimeout(typeWriter, 50);
         }
-
-        function startSection(id) {
-            currentSectionId = id; currentIndex = 0;
-            document.getElementById('categoryMenu').classList.add('hidden');
-            document.getElementById('navPopup').classList.add('hidden');
-            document.getElementById('slideshowContainer').classList.remove('hidden');
-            updateSlide();
-        }
-
-        function updateSlide() {
-            const currentData = sections[currentSectionId][currentIndex];
-            const imgElement = document.getElementById('currentSlideImg');
-            imgElement.src = currentData.img;
-            document.getElementById('currentCaption').innerText = currentData.msg;
-            document.getElementById('nextBtn').innerText = nextButtonTexts[Math.floor(Math.random() * nextButtonTexts.length)];
-            imgElement.classList.remove('fade-slide'); void imgElement.offsetWidth; imgElement.classList.add('fade-slide');
-        }
-
-        function nextSlide() {
-            currentIndex++;
-            if(currentIndex < sections[currentSectionId].length) {
-                updateSlide();
-            } else {
-                handleSectionEnd();
-            }
-        }
-
-        function handleSectionEnd() {
-            document.getElementById('slideshowContainer').classList.add('hidden');
-            const popup = document.getElementById('navPopup');
-            const options = document.getElementById('popupOptions');
-            options.innerHTML = "";
-            popup.classList.remove('hidden');
-
-            if(currentSectionId === 1) {
-                addOption("The Funny Side 😜", () => startSection(2));
-                addOption("The Soulmate Saga 👩‍❤️‍👨", () => startSection(3));
-            } else if(currentSectionId === 2) {
-                addOption("The Soulmate Saga 👩‍❤️‍👨", () => startSection(3));
-                addOption("Launch Into Chapter 18 🚀", launchHome);
-            } else {
-                addOption("Visit The Soulmate Saga 👩‍❤️‍👨", () => startSection(3));
-                addOption("Launch Into Chapter 18 🚀", launchHome);
-            }
-        }
-
-        function addOption(text, callback) {
-            const b = document.createElement('button');
-            b.className = "btn"; b.innerText = text; b.onclick = callback;
-            document.getElementById('popupOptions').appendChild(b);
-        }
-
-        function launchHome() {
-            document.getElementById('navPopup').classList.add('hidden');
-            const main = document.getElementById('mainContent');
-            main.style.display = "block";
-            setTimeout(() => { main.style.opacity = "1"; typeWriter(); }, 50);
-        }
-
-        // Countdown & Typing
-        const bdayDate = new Date("February 16, 2026 00:00:00").getTime();
-        setInterval(() => {
-            const d = bdayDate - new Date().getTime();
-            document.getElementById("countdown").innerHTML = Math.floor(d/(1000*60*60*24)) + "d : " + Math.floor((d%(1000*60*60*24))/(1000*60*60)) + "h : " + Math.floor((d%(1000*60*60))/(1000*60)) + "m : " + Math.floor((d%(1000*60))/1000) + "s Until 16th Feb ❤️";
-        }, 1000);
-
-        const typingText = "You are not just turning 18... you are stepping into your strength, your dreams, and your incredible light. I feel so lucky to walk beside you in this beautiful chapter. Happy Birthday, Soulmate! ❤️";
-        let charIndex = 0;
-        function typeWriter() {
-            if (charIndex < typingText.length) {
-                document.getElementById("typing").innerHTML += typingText.charAt(charIndex);
-                charIndex++; setTimeout(typeWriter, 50);
-            }
-        }
-    </script>
+    }
+</script>
 </body>
     </html>
