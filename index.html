@@ -42,7 +42,7 @@
         .fade-slide { animation: fadeSlide 0.8s ease forwards; }
         @keyframes fadeSlide { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 3D Balloons Styles */
+        /* 3D Balloon Animation */
         .balloon {
             position: fixed;
             bottom: -100px;
@@ -126,6 +126,10 @@
         <div id="revisitBtn" onclick="location.reload()">📷</div>
     </div>
 
+    <audio id="quizMusic" loop autoplay><source src="Quiz.m4a" type="audio/mpeg"></audio>
+    <audio id="slideshowMusic" loop><source src="perfect.mp3" type="audio/mpeg"></audio>
+    <audio id="funnyMusic" loop><source src="funny_tune.mp3" type="audio/mpeg"></audio>
+    <audio id="mainMusic" loop><source src="main_celebration.mp3" type="audio/mpeg"></audio>
 
 <script>
     const sections = {
@@ -158,22 +162,32 @@
     let currentSectionId = 0, currentIndex = 0;
     let visited = { 1: false, 2: false, 3: false };
 
-    // Music Manager
+    // --- Music Manager ---
     function playTrack(trackId) {
         const tracks = ['quizMusic', 'slideshowMusic', 'funnyMusic', 'mainMusic'];
         tracks.forEach(id => {
             let t = document.getElementById(id);
-            if (t) { t.pause(); t.currentTime = 0; }
+            if (t) { 
+                t.pause(); 
+                t.currentTime = 0; 
+            }
         });
-        const active = document.getElementById(trackId);
-        if(active) active.play().catch(e => console.log("Music blocked by browser until interaction"));
+        if (trackId) {
+            const active = document.getElementById(trackId);
+            if(active) active.play().catch(e => console.log("User interaction required for music"));
+        }
     }
 
     // Start Quiz Music on load
     window.onload = () => playTrack('quizMusic');
 
+    // --- Cipher Logic ---
     function checkCipher() {
         if(document.getElementById('cipherInput').value.trim().toUpperCase() === "KARTIK") {
+            // Stop Quiz Music immediately
+            const quiz = document.getElementById('quizMusic');
+            quiz.pause(); quiz.currentTime = 0;
+
             document.getElementById('welcomeScreen').style.opacity = "0";
             setTimeout(() => {
                 document.getElementById('welcomeScreen').classList.add('hidden');
@@ -181,7 +195,6 @@
                 success.classList.remove('hidden');
                 setTimeout(() => success.style.opacity = "1", 50);
                 
-                // FIXED: Removed the broken bgMusic line that caused the site to stop
                 setTimeout(() => {
                     success.style.opacity = "0";
                     setTimeout(() => {
@@ -190,10 +203,12 @@
                     }, 1000);
                 }, 4000);
             }, 1000);
-        } else { document.getElementById('cipherError').classList.remove('hidden'); }
+        } else { 
+            document.getElementById('cipherError').classList.remove('hidden'); 
+        }
     }
 
-    // Balloon Animation Logic
+    // --- Balloon Logic ---
     function spawnBalloons() {
         const colors = ['#ff4e50', '#ffd700', '#ff9a9e', '#fad0c4', '#a18cd1', '#ffffff'];
         setInterval(() => {
@@ -201,12 +216,13 @@
             b.className = 'balloon';
             b.style.left = Math.random() * 100 + 'vw';
             b.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            b.style.animationDuration = (Math.random() * 3 + 4) + 's'; // 4-7 seconds
+            b.style.animationDuration = (Math.random() * 3 + 4) + 's';
             document.body.appendChild(b);
             setTimeout(() => b.remove(), 7000);
         }, 500);
     }
 
+    // --- Slideshow & Navigation ---
     function toggleLock() { document.getElementById('funnyLock').classList.toggle('hidden'); }
     
     function checkFunnyPass() {
@@ -215,13 +231,11 @@
     }
 
     function startSection(id) {
-        currentSectionId = id; currentIndex = 0; 
-        visited[id] = true; 
+        currentSectionId = id; currentIndex = 0; visited[id] = true;
         document.getElementById('categoryMenu').classList.add('hidden');
         document.getElementById('navPopup').classList.add('hidden');
         document.getElementById('slideshowContainer').classList.remove('hidden');
         
-        // Music Switch
         if(id === 2) playTrack('funnyMusic');
         else playTrack('slideshowMusic');
 
@@ -249,7 +263,7 @@
         options.innerHTML = "";
         popup.classList.remove('hidden');
 
-        if (!visited[1]) addOption("✨ The Classic Beauty", () => startSection(1));
+        if (!visited[1]) addOption("✨ The Goddess Era", () => startSection(1));
         if (!visited[2]) addOption("😜 Little Miss Dramebaaz", () => {
             popup.classList.add('hidden');
             document.getElementById('categoryMenu').classList.remove('hidden');
@@ -269,12 +283,13 @@
     function launchHome() {
         document.getElementById('navPopup').classList.add('hidden');
         playTrack('mainMusic');
-        spawnBalloons(); // Start 3D Balloons here
+        spawnBalloons();
         const main = document.getElementById('mainContent');
         main.style.display = "block";
         setTimeout(() => { main.style.opacity = "1"; typeWriter(); }, 50);
     }
 
+    // --- Utils ---
     const bdayDate = new Date("February 16, 2026 00:00:00").getTime();
     setInterval(() => {
         const d = bdayDate - new Date().getTime();
@@ -291,4 +306,4 @@
     }
 </script>
 </body>
-        </html>
+                </html>
