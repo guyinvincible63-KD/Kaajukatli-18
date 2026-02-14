@@ -1,164 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 18 – Deepika ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;600&family=Caveat:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <style>
-        :root { --accent: #ffd700; --pink: #ff85a2; --deep: #1a0a2e; }
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: 'Poppins', sans-serif; color: white; transition: background 1.2s ease; }
-        
-        .bg-lounge { background: #050505; }
-        .bg-cipher { background: radial-gradient(circle, #1a0a2e, #000); }
-        .bg-success { background: #b31217; }
-        .bg-classic { background: linear-gradient(135deg, #2c3e50, #000); }
-        .bg-dramebaaz { background: linear-gradient(135deg, #8e44ad, #2c3e50); }
-        .bg-soulmate { background: linear-gradient(135deg, #e74c3c, #000); }
-        .bg-galaxy { background: #020202; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chapter 18 – Deepika ❤️</title>
+<!-- Google Fonts for better styling -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;600&family=Caveat:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+<style>
+:root { --accent: #ffd700; --pink: #ff85a2; --deep: #1a0a2e; }
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: 'Poppins', sans-serif; color: white; transition: background 1.2s ease; }
+body { background-color: #050505; }
 
-        .hidden { display: none !important; }
-        .full-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; text-align: center; padding: 20px; box-sizing: border-box; }
+.bg-lounge { background: #050505; }
+.bg-cipher { background: radial-gradient(circle, #1a0a2e, #000); }
+.bg-success { background: #b31217; }
+.bg-classic { background: linear-gradient(135deg, #2c3e50, #000); }
+.bg-dramebaaz { background: linear-gradient(135deg, #8e44ad, #2c3e50); }
+.bg-soulmate { background: linear-gradient(135deg, #e74c3c, #000); }
+.bg-galaxy { background: #020202; }
 
-        canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 1; }
+.hidden { display: none !important; }
+.full-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; text-align: center; padding: 20px; box-sizing: border-box; }
 
-        .glow-title { font-family: 'Playfair Display'; font-size: 3rem; color: var(--accent); text-shadow: 0 0 20px rgba(255,215,0,0.5); }
-        .handwritten { font-family: 'Caveat'; }
-        .final-love { font-family: 'Dancing Script', cursive; font-size: 4.5rem; color: #ff4e50; animation: pulse 2s infinite; }
+canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 1; }
 
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.glow-title { font-family: 'Playfair Display'; font-size: 3rem; color: var(--accent); text-shadow: 0 0 20px rgba(255,215,0,0.5); }
+.handwritten { font-family: 'Caveat'; }
+.final-love { font-family: 'Dancing Script', cursive; font-size: 4.5rem; color: #ff4e50; animation: pulse 2s infinite; }
 
-        .btn { background: white; color: #1a0a2e; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; z-index: 2000; margin: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 0 20px var(--accent); }
-        input { padding: 12px; border-radius: 10px; border: 2px solid var(--accent); text-align: center; font-size: 1.1rem; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-        .slide-container { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; animation: slideIn 0.8s ease; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .slide-img { max-width: 80%; max-height: 55vh; border-radius: 15px; border: 8px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-        
-        .floating-icon { position: fixed; width: 80px; height: 80px; cursor: pointer; z-index: 3000; transition: all 2.5s ease-in-out; text-align: center; }
-        .icon-symbol { font-size: 3rem; filter: drop-shadow(0 0 10px gold); }
+.btn { background: white; color: #1a0a2e; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; z-index: 2000; margin: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 0 20px var(--accent); }
+input { padding: 12px; border-radius: 10px; border: 2px solid var(--accent); text-align: center; font-size: 1.1rem; }
 
-        .poem-box { background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); padding: 40px; border-radius: 30px; border: 1px solid var(--accent); max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
-        .poem-text { white-space: pre-line; text-align: left; font-size: 1.3rem; line-height: 1.6; }
-    </style>
+.slide-container { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; animation: slideIn 0.8s ease; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.slide-img { max-width: 80%; max-height: 55vh; border-radius: 15px; border: 8px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.6); cursor: pointer; transition: all 0.5s ease; }
+.caption { font-family: 'Caveat'; color: var(--accent); margin-top:25px; font-size: 2.2rem; }
+
+.floating-icon { position: fixed; width: 80px; height: 80px; cursor: pointer; z-index: 3000; transition: all 2.5s ease-in-out; text-align: center; }
+.icon-symbol { font-size: 3rem; filter: drop-shadow(0 0 10px gold); }
+
+.poem-box { background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); padding: 40px; border-radius: 30px; border: 1px solid var(--accent); max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
+.poem-text { white-space: pre-line; text-align: left; font-family: 'Pacifico', cursive; font-size: 1.4rem; line-height: 1.8; opacity: 0; transition: opacity 0.5s ease; color: #fff; }
+
+#birthdayMsg {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-top: 20px;
+    text-align: center;
+}
+</style>
 </head>
 <body class="bg-lounge">
 
-    <canvas id="starCanvas"></canvas>
+<canvas id="starCanvas"></canvas>
 
-    <audio id="quizMusic" loop><source src="quiz.m4a" type="audio/mpeg"></audio>
-    <audio id="memoriesMusic" loop><source src="memories.m4a" type="audio/mpeg"></audio>
-    <audio id="mainMusic" loop><source src="main.m4a" type="audio/mpeg"></audio>
+<audio id="quizMusic" loop><source src="quiz.m4a" type="audio/mpeg" /></audio>
+<audio id="memoriesMusic" loop><source src="memories.m4a" type="audio/mpeg" /></audio>
+<audio id="mainMusic" loop><source src="main.m4a" type="audio/mpeg" /></audio>
 
-    <div id="startStage" class="full-screen">
-        <h1 class="glow-title">Chapter 18</h1>
-        <button class="btn" onclick="initExp()">Open Your World ✨</button>
-    </div>
+<!-- Initial Start Screen -->
+<div id="startStage" class="full-screen">
+<h1 class="glow-title">Chapter 18</h1>
+<button class="btn" onclick="initExp()">Open Your World ✨</button>
+</div>
 
-    <div id="loungeStage" class="full-screen hidden">
-        <h1 class="glow-title">Wait for the Magic...</h1>
-        <div id="timer" style="font-size: 4rem; color: var(--accent);">00:00:05</div>
-        <button class="btn" onclick="checkP()">Verify & Enter 🔓</button>
-    </div>
+<!-- Waiting Stage -->
+<div id="loungeStage" class="full-screen hidden">
+<h1 class="glow-title">Wait for the Magic...</h1>
+<div id="timer" style="font-size: 4rem; color: var(--accent);">00:00:05</div>
+<button class="btn" onclick="checkP()">Verify & Enter 🔓</button>
+</div>
 
-    <div id="cipherStage" class="full-screen hidden">
-        <div class="poem-box">
-            <h2 class="glow-title" style="font-size: 1.8rem;">🔓 The Cipher</h2>
-            <p style="letter-spacing: 3px; border: 1px dashed white; padding: 15px;">23-8-15 &nbsp; 9-19 &nbsp; 25-15-21-18 <br> 19-15-21-12-13-1-20-5 ?</p>
-            <p style="font-size: 0.8rem; color: #ccc;"><i>(HINT: Answer in CAPITAL & No AI! 😉)</i></p>
-            <input type="text" id="cipherInput" placeholder="DECODE HERE...">
-            <br><button class="btn" onclick="verifyC()">Verify ✨</button>
-        </div>
-    </div>
+<!-- Cipher Stage -->
+<div id="cipherStage" class="full-screen hidden">
+<div class="poem-box">
+<h2 class="glow-title" style="font-size: 1.8rem;">🔓 The Cipher</h2>
+<p style="letter-spacing: 3px; border: 1px dashed white; padding: 15px;">23-8-15 &amp; 9-19 &amp; 25-15-21-18 <br> 19-15-21-12-13-1-20-5 ?</p>
+<p style="font-size: 0.8rem; color: #ccc;"><i>(HINT: Answer in CAPITAL &amp; No AI! 😉)</i></p>
+<input type="text" id="cipherInput" placeholder="DECODE HERE..." />
+<br><button class="btn" onclick="verifyC()">Verify ✨</button>
+</div>
+</div>
 
-    <div id="successStage" class="full-screen hidden">
-        <h1 class="glow-title" style="font-size: 4.5rem;">Correct! ✅</h1>
-        <p class="handwritten" style="font-size: 2.2rem;">Welcome to your 18th Chapter, My Love.</p>
-    </div>
+<!-- Success Stage -->
+<div id="successStage" class="full-screen hidden">
+<h1 class="glow-title" style="font-size: 4.5rem;">Correct! ✅</h1>
+<p class="handwritten" style="font-size: 2.2rem;">Welcome to your 18th Chapter, My Love.</p>
+</div>
 
-    <div id="menuStage" class="full-screen hidden">
-        <h2 class="glow-title">Choose Your Path</h2>
-        <button class="btn" onclick="startS(1)">✨ Classic Beauty</button>
-        <button class="btn" onclick="document.getElementById('pLock').classList.toggle('hidden')">😜 Little Miss Dramebaaz</button>
-        <button class="btn" onclick="startS(3)">👩‍❤️‍👨 Soulmate Saga</button>
-        <div id="pLock" class="hidden">
-            <input type="password" id="sPass" placeholder="Secret Code...">
-            <br><button class="btn" onclick="vSecret()">Unlock 🔓</button>
-        </div>
-    </div>
+<!-- Main Menu Stage -->
+<div id="menuStage" class="full-screen hidden">
+<h2 class="glow-title">Choose Your Path</h2>
+<button class="btn" onclick="startS(1)">✨ Classic Beauty</button>
+<button class="btn" onclick="document.getElementById('pLock').classList.toggle('hidden')">😜 Little Miss Dramebaaz</button>
+<button class="btn" onclick="startS(3)">👩‍❤️‍👨 Soulmate Saga</button>
+<div id="pLock" class="hidden">
+<input type="password" id="sPass" placeholder="Secret Code..." />
+<br><button class="btn" onclick="vSecret()">Unlock 🔓</button>
+</div>
+</div>
 
-    <div id="slideStage" class="full-screen hidden">
-        <div class="slide-container">
-            <img id="sImg" class="slide-img" src="">
-            <div id="sCap" class="caption handwritten" style="color: var(--accent); margin-top:25px; font-size: 2.2rem;"></div>
-            <button class="btn" onclick="nextP()">Next Memory ➔</button>
-        </div>
-    </div>
+<!-- Slide Memory Stage -->
+<div id="slideStage" class="full-screen hidden">
+<div class="slide-container">
+<img id="sImg" class="slide-img" src="" onclick="selectImage()" />
+<div id="sCap" class="caption"></div>
+<button class="btn" onclick="nextP()">Next Memory ➔</button>
+</div>
+</div>
 
-    <div id="mainPage" class="full-screen hidden">
-        <h1 class="glow-title" style="font-size: 3.5rem;">DEEPIKA TURNS 18</h1>
-        <div id="iconV" class="floating-icon" onclick="openPoems()"><span class="icon-symbol">📜</span><small>Verses</small></div>
-        <div id="iconL" class="floating-icon" onclick="openLetter()"><span class="icon-symbol">💌</span><small>Letter</small></div>
-        <button id="pTrig" class="btn hidden" onclick="startProp()" style="margin-top: 50px; background: #ff4e50; color: white;">A Question for You... 💍</button>
-    </div>
+<!-- Main Page after memories -->
+<div id="mainPage" class="full-screen hidden">
+<h1 class="glow-title" style="font-size: 3.5rem;">DEEPIKA TURNS 18</h1>
+<div id="iconV" class="floating-icon" onclick="openPoems()"><span class="icon-symbol">📜</span><br><small>Verses</small></div>
+<div id="iconL" class="floating-icon" onclick="openLetter()"><span class="icon-symbol">💌</span><br><small>Letter</small></div>
+<button id="pTrig" class="btn hidden" onclick="startProp()" style="margin-top: 50px; background: #ff4e50; color: white;">A Question for You... 💍</button>
+<!-- Final birthday message -->
+<div id="birthdayMsg" style="display:none;">HAPPY BIRTHDAY MY KAAJUKATLI 💓🤌</div>
+</div>
 
-    <div id="pOverlay" class="full-screen hidden" style="background: rgba(0,0,0,0.98);">
-        <div class="poem-box">
-            <div id="pContent" class="poem-text handwritten"></div>
-            <button class="btn" id="nextPBtn" onclick="nextPoemItem()" style="margin-top:20px;">Next Poem ✨</button>
-        </div>
-    </div>
+<!-- Poem Overlay -->
+<div id="pOverlay" class="full-screen hidden" style="background: rgba(0,0,0,0.98);">
+<div class="poem-box">
+<div id="pContent" class="poem-text"></div>
+<button class="btn" id="nextPBtn" onclick="nextPoem()" style="margin-top:20px;">Next Poem ✨</button>
+</div>
+</div>
 
-    <div id="lOverlay" class="full-screen hidden" style="background: rgba(0,0,0,0.98);">
-        <div class="poem-box handwritten" style="background: #fffafa; color: #333; text-align: left; font-size: 1.4rem;">
-            [PASTE PERSONAL LETTER HERE]
-        </div>
-        <button class="btn" onclick="closeL()">Close Letter</button>
-    </div>
+<!-- Letter Overlay -->
+<div id="lOverlay" class="full-screen hidden" style="background: rgba(0,0,0,0.98);">
+<div class="poem-box" style="background:#fffafa; color:#333; text-align:left; font-family:'Caveat'; font-size:1.4rem;">
+[PASTE PERSONAL LETTER HERE]
+</div>
+<button class="btn" onclick="closeL()">Close Letter</button>
+</div>
 
-    <div id="prop1" class="full-screen hidden" style="background: #1a0a2e;">
-        <div class="poem-box">
-            <h2>Deepika, how many future years do you want to be with me?</h2>
-            <button class="btn" onclick="goProp2()">♾️</button>
-            <button class="btn" onclick="goProp2()">Infinite</button>
-        </div>
-    </div>
+<!-- Love Question -->
+<div id="prop1" class="full-screen hidden" style="background:#1a0a2e;">
+<div class="poem-box">
+<h2>Deepika, how many future years do you want to be with me?</h2>
+<button class="btn" onclick="goProp2()">♾️</button>
+<button class="btn" onclick="goProp2()">Infinite</button>
+</div>
+</div>
 
-    <div id="prop2" class="full-screen hidden" style="background: #1a0a2e;">
-        <div class="poem-box">
-            <h2>You really do mean your answer? 🥺</h2>
-            <button class="btn" onclick="finish()">Yes, I do! ❤️</button>
-            <button class="btn" onclick="khabardar()">No...</button>
-        </div>
-    </div>
+<div id="prop2" class="full-screen hidden" style="background:#1a0a2e;">
+<div class="poem-box">
+<h2>You really do mean your answer? 🥺</h2>
+<button class="btn" onclick="finish()">Yes, I do! ❤️</button>
+<button class="btn" onclick="khabardar()">No...</button>
+</div>
+</div>
 
-    <div id="finalStage" class="full-screen hidden" style="background: #000;">
-        <h1 class="final-love">I Love You Deepika!</h1>
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; color: var(--accent);">MY WORLD... 🌎</h2>
-        <div style="font-size: 5rem; margin-top: 20px;">💋 😘 💖 🌹 😘 💋</div>
-    </div>
+<!-- Final Love Message -->
+<div id="finalStage" class="full-screen hidden" style="background:#000;">
+<h1 class="final-love">I Love You Deepika!</h1>
+<h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; color: var(--accent);">MY WORLD... 🌎</h2>
+<div style="font-size: 5rem; margin-top:20px;">💋 😘 💖 🌹 😘 💋</div>
+</div>
 
-    <script>
-        // Stars
+<!-- JavaScript -->
+<script>
+        // Starfield animation
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
         let stars = [], comets = [];
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
         class Star { constructor() { this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.opacity = Math.random(); } draw() { ctx.fillStyle = `rgba(255,255,255,${this.opacity})`; ctx.beginPath(); ctx.arc(this.x,this.y,1,0,Math.PI*2); ctx.fill(); } }
         class Comet { constructor() { this.reset(); } reset() { this.x = Math.random()*canvas.width; this.y = -50; this.speed = 4; } update() { this.y += this.speed; this.x -= 2; if(this.y > canvas.height) this.reset(); } draw() { ctx.strokeStyle = "rgba(255,215,0,0.3)"; ctx.beginPath(); ctx.moveTo(this.x,this.y); ctx.lineTo(this.x+30,this.y-60); ctx.stroke(); } }
         for(let i=0;i<120;i++) stars.push(new Star()); for(let i=0;i<4;i++) comets.push(new Comet());
         function anim() { ctx.clearRect(0,0,canvas.width,canvas.height); stars.forEach(s=>s.draw()); comets.forEach(c=>{c.update();c.draw();}); requestAnimationFrame(anim); }
         anim();
 
-        // Data
+        // Data and state
         let ready = false, pIdx = 0, currentS = 0, photoIdx = 0, seen = {1:false,2:false,3:false}, vV = false, vL = false;
-        
         const poems = [
-            `<b>Our Journey</b>\n\nBestowed upon a flower🌸, Struck by the fragrance she showers🌿. A moment to grasp the metaphor— Her simple smile swirls my heart’s core❤️‍🔥. Blooming, my soul becomes ecstatic✨.\n\nHer gaze whispers romance💫, Bringing peace to life’s expanse🕊️. Curves flow from neck down to feet💃, Where every delicacy meets perfection sweet🍃. Darling, your lips, a place to die💋, The ultimate moon with no smudge in the sky🌙, Filling life with love and gentle rest🌹.\n\nThe night we shared, By the riverbank side🏞️, Cuddled close on the steps, Warmth growing deep inside🔥— That pace embracing us, Leading to the magical bliss, Caught in the moment’s blush😊, Our first ever kiss💏.`,
-            `<b>Irreplaceable</b>\n\nIsn't the nature indicating somethin', 🌿\nMoon seems to be more shiny. 🌕\nEven the beauty lost its weight, ⚖️\nBeen replaced by the the irreplaceable. ✨\nYeah its the name, that I chase for , 👣\nDeeply in hearts of optimistic forest, 🌲\nThe name of my flower, Deepika. 🌸`,
-            `<b>The Rooting Self</b>\n\nDizziness felt 💫\nAnd darkness arose 🌑\nJust in time, the tale-lore spoke 📖\nEnough of the fairy 🧚‍♀️\nThe magic spread thin ✨\nJust to keep me awake 👁️\nAnd rooting still 🌳\nFor the together self... 👩‍❤️‍👨`
+`<b>Our Journey</b>\n\nBestowed upon a flower🌸,  
+Struck by the fragrance she showers🌿.  
+A moment to grasp the metaphor—  
+Her simple smile swirls my heart’s core❤️‍🔥.  
+Blooming, my soul becomes ecstatic✨.\n\n
+Her gaze whispers romance💫,  
+Bringing peace to life’s expanse🕊️.  
+Curves flow from neck down to feet💃,  
+Where every delicacy meets perfection sweet🍃.  
+Darling, your lips, a place to die💋,  
+The ultimate moon with no smudge in the sky🌙,  
+Filling life with love and gentle rest🌹.\n\n
+The night we shared,  
+By the riverbank side🏞️,  
+Cuddled close on the steps,  
+Warmth growing deep inside🔥—  
+That pace embracing us,  
+Leading to the magical bliss,  
+Caught in the moment’s blush😊,  
+Our first ever kiss💏.`,
+`<b>Irreplaceable</b>\n\nIsn't the nature indicating somethin', 🌿\nMoon seems to be more shiny. 🌕\nEven the beauty lost its weight, ⚖️\nBeen replaced by the the irreplaceable. ✨\nYeah its the name, that I chase for , 👣\nDeeply in hearts of optimistic forest, 🌲\nThe name of my flower, Deepika. 🌸`,
+`<b>The Rooting Self</b>\n\nDizziness felt 💫\nAnd darkness arose 🌑\nJust in time, the tale-lore spoke 📖\nEnough of the fairy 🧚‍♀️\nThe magic spread thin ✨\nJust to keep me awake 👁️\nAnd rooting still 🌳\nFor the together self... 👩‍❤️‍👨`
         ];
 
         const photos = {
@@ -167,7 +217,7 @@
             3: [{img:"Deepika12.jpg", m:"Holding you 🤝💞"}, {img:"Deepika13.jpg", m:"Our future 👁️🌅"}, {img:"Deepika14.jpg", m:"Bluetooth 📶💝"}, {img:"Deepika15.jpg", m:"Just you and me 👩‍❤️‍👨"}, {img:"Deepika16.jpg", m:"Deadly duo 🔥⚔️"}, {img:"Deepika17.jpg", m:"Together ♾️🌹"}]
         };
 
-        // Stages
+        // Stage transitions
         function initExp() {
             document.getElementById('quizMusic').play();
             document.getElementById('startStage').classList.add('hidden');
@@ -183,7 +233,7 @@
                 setTimeout(() => {
                     document.getElementById('successStage').classList.add('hidden');
                     document.getElementById('menuStage').classList.remove('hidden');
-                    document.body.className = "bg-lounge"; playM('memoriesMusic');
+                    playM('memoriesMusic');
                 }, 3000);
             }
         }
@@ -195,34 +245,105 @@
             document.getElementById('slideStage').classList.remove('hidden');
             upP();
         }
-        function upP() { const p = photos[currentS][photoIdx]; document.getElementById('sImg').src = p.img; document.getElementById('sCap').innerText = p.m; }
+        function upP() { 
+            const p = photos[currentS][photoIdx]; 
+            document.getElementById('sImg').src = p.img; 
+            document.getElementById('sCap').innerText = p.m; 
+            // Reset opacity for transition
+            document.getElementById('sImg').style.opacity = 1;
+        }
         function nextP() {
             photoIdx++;
-            if(photoIdx < photos[currentS].length) upP();
-            else {
+            if(photoIdx < photos[currentS].length) {
+                // Animate fade out
+                const img = document.getElementById('sImg');
+                img.style.transition = 'opacity 0.5s ease';
+                img.style.opacity = 0;
+                setTimeout(() => {
+                    upP();
+                    img.style.opacity = 1;
+                }, 500);
+            } else {
                 document.getElementById('slideStage').classList.add('hidden');
                 if(seen[1] && seen[2] && seen[3]) {
-                    document.body.className = "bg-galaxy"; document.getElementById('mainPage').classList.remove('hidden');
-                    playM('mainMusic'); moveI();
-                } else { document.body.className = "bg-lounge"; document.getElementById('menuStage').classList.remove('hidden'); }
+                    document.body.className = "bg-galaxy"; 
+                    document.getElementById('mainPage').classList.remove('hidden');
+                    playM('mainMusic');
+                    moveI();
+                } else { 
+                    document.body.className = "bg-lounge"; 
+                    document.getElementById('menuStage').classList.remove('hidden'); 
+                }
             }
         }
         function moveI() {
             ['iconV', 'iconL'].forEach(id => {
-                setInterval(() => { const el = document.getElementById(id); el.style.top = Math.random()*75 + 'vh'; el.style.left = Math.random()*75 + 'vw'; }, 2500);
+                setInterval(() => { 
+                    const el = document.getElementById(id); 
+                    el.style.top = Math.random()*75 + 'vh'; 
+                    el.style.left = Math.random()*75 + 'vw'; 
+                }, 2500);
             });
         }
-        function openPoems() { pIdx = 0; vV = true; document.getElementById('pOverlay').classList.remove('hidden'); upPoem(); }
-        function upPoem() { document.getElementById('pContent').innerText = poems[pIdx]; }
-        function nextPoemItem() { pIdx++; if(pIdx < poems.length) upPoem(); else { document.getElementById('pOverlay').classList.add('hidden'); checkU(); } }
+        function openPoems() { pIdx = 0; vV = true; document.getElementById('pOverlay').classList.remove('hidden'); showPoem(pIdx); }
+        function showPoem(index) {
+            const p = document.getElementById('pContent');
+            p.innerHTML = poems[index].replace(/\n/g, '<br>');
+            p.style.opacity = 0;
+            setTimeout(() => { p.style.opacity = 1; }, 100);
+        }
+        function nextPoem() { 
+            pIdx++; 
+            if(pIdx < poems.length) { showPoem(pIdx); } 
+            else { 
+                document.getElementById('pOverlay').classList.add('hidden'); 
+                showFinalPage(); 
+            } 
+        }
         function openLetter() { vL = true; document.getElementById('lOverlay').classList.remove('hidden'); }
         function closeL() { document.getElementById('lOverlay').classList.add('hidden'); checkU(); }
         function checkU() { if(vV && vL) document.getElementById('pTrig').classList.remove('hidden'); }
         function startProp() { document.getElementById('mainPage').classList.add('hidden'); document.getElementById('prop1').classList.remove('hidden'); }
         function goProp2() { document.getElementById('prop1').classList.add('hidden'); document.getElementById('prop2').classList.remove('hidden'); }
-        function finish() { document.getElementById('prop2').classList.add('hidden'); document.getElementById('finalStage').classList.remove('hidden'); }
+        function finish() { document.getElementById('prop2').classList.add('hidden'); document.getElementById('finalStage').classList.remove('hidden'); showBirthday(); }
         function khabardar() { alert("Khabardar ye option choose kiya toh 🔪"); }
-        function playM(id) { ['quizMusic','memoriesMusic','mainMusic'].forEach(m=>{let a=document.getElementById(m); if(m===id) a.play(); else a.pause();}); }
+        function playM(id) { ['quizMusic','memoriesMusic','mainMusic'].forEach(m => { let a = document.getElementById(m); if(m===id) a.play(); else a.pause(); }); }
+        function showFinalPage() {
+            document.getElementById('finalStage').classList.remove('hidden');
+            showBirthday();
+        }
+        function showBirthday() {
+            document.getElementById('birthdayMsg').style.display='block';
+        }
+
+        // Handling selections in memories
+        let selectedImages = {1:false, 2:false, 3:false};
+        function selectImage() {
+            const img = document.getElementById('sImg');
+            // Animate fade out
+            img.style.transition = 'opacity 0.5s ease';
+            img.style.opacity = 0;
+            setTimeout(() => {
+                // Remove the image element
+                img.style.display='none';
+
+                // Remove from options
+                // Find the current image index
+                const currentImgs = photos[currentS];
+                const currentImgSrc = img.src;
+                // Remove the selected image from the array
+                photos[currentS] = currentImgs.filter(p => p.img !== currentImgSrc);
+                // Reset image display
+                img.style.display='block';
+                img.style.opacity=1;
+
+                // Proceed to next image
+                nextP();
+            }, 500);
+        }
+
+        // Initialize the first poem on opening
+        // (Already handled in openPoems)
     </script>
 </body>
-</html>
+    </html>
