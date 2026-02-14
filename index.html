@@ -101,7 +101,10 @@
         <div id="revisitBtn" onclick="location.reload()">📷</div>
     </div>
 
-    <audio id="bgMusic" loop><source src="birthday.mp3" type="audio/mpeg"></audio>
+    <audio id="quizMusic" loop autoplay><source src="quiz_tune.m4A" type="audio/mpeg"></audio>
+<audio id="slideshowMusic" loop><source src="perfect.mp3" type="audio/mpeg"></audio>
+<audio id="funnyMusic" loop><source src="funny_tune.mp3" type="audio/mpeg"></audio>
+<audio id="mainMusic" loop><source src="main_celebration.mp3" type="audio/mpeg"></audio>
 
                     
                     
@@ -233,6 +236,44 @@
         if (charIndex < typingText.length) {
             document.getElementById("typing").innerHTML += typingText.charAt(charIndex);
             charIndex++; setTimeout(typeWriter, 50);
+
+            function playTrack(trackId) {
+    const tracks = ['quizMusic', 'slideshowMusic', 'funnyMusic', 'mainMusic'];
+    tracks.forEach(id => {
+        let t = document.getElementById(id);
+        if (t) { 
+            t.pause(); 
+            t.currentTime = 0; 
+        }
+    });
+    document.getElementById(trackId).play();
+}
+
+// 1. Start Quiz Music on load
+window.onload = () => playTrack('quizMusic');
+
+// 2. Change to Slideshow Music
+function startSection(id) {
+    currentSectionId = id; currentIndex = 0; visited[id] = true;
+    document.getElementById('categoryMenu').classList.add('hidden');
+    document.getElementById('navPopup').classList.add('hidden');
+    document.getElementById('slideshowContainer').classList.remove('hidden');
+    
+    // Play funny music for section 2, otherwise play romantic music
+    if(id === 2) playTrack('funnyMusic');
+    else playTrack('slideshowMusic');
+    
+    updateSlide();
+}
+
+// 3. Change to Main Page Music
+function launchHome() {
+    document.getElementById('navPopup').classList.add('hidden');
+    playTrack('mainMusic');
+    const main = document.getElementById('mainContent');
+    main.style.display = "block";
+    setTimeout(() => { main.style.opacity = "1"; typeWriter(); }, 50);
+}
         }
     }
 </script>
