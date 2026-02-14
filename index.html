@@ -112,19 +112,19 @@
     const sections = {
         1: [
             {img: "Deepika1.jpg", msg: "Beginning of yours journey 🌱"},
-            {img: "Deepika2.jpg", msg: "My favorite smile in the whole world 😌💗"},
+            {img: "Deepika2.jpg", msg: "My favorite smile in the whole world 😍"},
             {img: "Deepika3.jpg", msg: "Just elegant ✨"},
             {img: "Deepika4.jpg", msg: "ssshhh.... you are mine 🤫❤️"},
             {img: "Deepika5.jpg", msg: "Doraemon 🐱‍🚀"},
             {img: "Deepika6.jpg", msg: "Undoubtedly, you are the most beautiful girl 👑"}
         ],
         2: [
-            {img: "Deepika7.jpg", msg: " Khooyi si  🔍💖"},
+            {img: "Deepika7.jpg", msg: "Kis chiz ki talash h - m kar du puri 🔍💖"},
             {img: "Deepika8.jpg", msg: "Kitni khush h yrr - aisi hi reh 😊🧿"},
             {img: "Deepika9.jpg", msg: "Gehrii sochh.... - pakka mere baare m hi soch rhi hogi 🤔💭"},
             {img: "Deepika10.jpg", msg: "Chhota Don 😎👊"},
             {img: "Deepika11.jpg", msg: "In my control now.... chin tapak dum dum 🪄😈"},
-            {img: "Deepika.jpg", msg: "My chubby princess 😘💝"}
+            {img: "Deepika.jpg", msg: "My chubby princess 🍑👑"}
         ],
         3: [
             {img: "Deepika12.jpg", msg: "Holding you - just a phenomenal experience 🤝💞"},
@@ -137,30 +137,9 @@
     };
 
     let currentSectionId = 0, currentIndex = 0;
+    // Track what has been seen to prevent loops
     let visited = { 1: false, 2: false, 3: false };
 
-    // --- MUSIC LOGIC ---
-    function playTrack(trackId) {
-        const tracks = ['quizMusic', 'slideshowMusic', 'funnyMusic', 'mainMusic'];
-        tracks.forEach(id => {
-            let t = document.getElementById(id);
-            if (t) { 
-                t.pause(); 
-                t.currentTime = 0; 
-            }
-        });
-        const activeTrack = document.getElementById(trackId);
-        if(activeTrack) {
-            activeTrack.play().catch(error => {
-                console.log("Autoplay prevented. Music will start after first click.");
-            });
-        }
-    }
-
-    // Start Quiz Music immediately
-    window.onload = () => playTrack('quizMusic');
-
-    // --- NAVIGATION LOGIC ---
     function checkCipher() {
         if(document.getElementById('cipherInput').value.trim().toUpperCase() === "KARTIK") {
             document.getElementById('welcomeScreen').style.opacity = "0";
@@ -169,8 +148,7 @@
                 const success = document.getElementById('successScreen');
                 success.classList.remove('hidden');
                 setTimeout(() => success.style.opacity = "1", 50);
-                
-                // Note: 'bgMusic' was missing in your audio tags, quiz music continues here
+                document.getElementById('bgMusic').play();
                 setTimeout(() => {
                     success.style.opacity = "0";
                     setTimeout(() => {
@@ -191,15 +169,10 @@
 
     function startSection(id) {
         currentSectionId = id; currentIndex = 0; 
-        visited[id] = true;
+        visited[id] = true; // Mark as seen
         document.getElementById('categoryMenu').classList.add('hidden');
         document.getElementById('navPopup').classList.add('hidden');
         document.getElementById('slideshowContainer').classList.remove('hidden');
-        
-        // Music Switch
-        if(id === 2) playTrack('funnyMusic');
-        else playTrack('slideshowMusic');
-        
         updateSlide();
     }
 
@@ -224,6 +197,7 @@
         options.innerHTML = "";
         popup.classList.remove('hidden');
 
+        // Logic: Only show buttons for sections she HASN'T seen yet
         if (!visited[1]) addOption("✨ The Goddess Era", () => startSection(1));
         if (!visited[2]) addOption("😜 Little Miss Dramebaaz", () => {
             popup.classList.add('hidden');
@@ -232,6 +206,7 @@
         });
         if (!visited[3]) addOption("👩‍❤️‍👨 The Soulmate Saga", () => startSection(3));
         
+        // Always allow proceeding to the main celebration
         addOption("🚀 Launch Into Chapter 18", launchHome);
     }
 
@@ -243,13 +218,12 @@
 
     function launchHome() {
         document.getElementById('navPopup').classList.add('hidden');
-        playTrack('mainMusic');
         const main = document.getElementById('mainContent');
         main.style.display = "block";
         setTimeout(() => { main.style.opacity = "1"; typeWriter(); }, 50);
     }
 
-    // --- COUNTDOWN & TYPING ---
+    // Countdown and Typing logic remains the same...
     const bdayDate = new Date("February 16, 2026 00:00:00").getTime();
     setInterval(() => {
         const d = bdayDate - new Date().getTime();
@@ -264,6 +238,8 @@
             charIndex++; setTimeout(typeWriter, 50);
         }
     }
-        </script>
+                </script>
+
+    
 </body>
     </html>
