@@ -213,7 +213,7 @@
     </div>
 
 <script>
-    const TEST_MODE = false; // CHANGE TO FALSE FOR REAL DATE
+    const TEST_MODE = true; // CHANGE TO FALSE FOR REAL DATE
 
     let currentSectionId = 0, currentIndex = 0, currentPoemIdx = 0;
     let visited = { 1: false, 2: false, 3: false };
@@ -241,13 +241,34 @@
             }, 1000);
         } else {
             const target = new Date("February 16, 2026 00:00:00").getTime();
-            setInterval(() => {
-                const diff = target - new Date().getTime();
-                if(diff<=0){ document.getElementById('patienceBtn').classList.add('hidden'); document.getElementById('realProceed').classList.remove('hidden'); return; }
-                const h = Math.floor(diff/(1000*60*60)), m = Math.floor((diff%(1000*60*60))/(1000*60)), s = Math.floor((diff%(1000*60))/1000);
-                document.getElementById('countdownTimer').innerText = `${h}h ${m}m ${s}s`;
-            }, 1000);
-        }
+
+            // Create a function to update the timer
+            const updateTimer = () => {
+                const now = new Date().getTime();
+                const diff = target - now;
+
+                if (diff <= 0) {
+                    document.getElementById('countdownTimer').innerText = "00:00:00";
+                    document.getElementById('patienceBtn').classList.add('hidden');
+                    document.getElementById('realProceed').classList.remove('hidden');
+                    clearInterval(timerInterval); // Stop the timer once reached
+                    return;
+                }
+
+                const h = Math.floor(diff / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                // Added padding so it looks like 01:05:09 instead of 1:5:9
+                document.getElementById('countdownTimer').innerText = 
+                    `${h.toString().padStart(2, '0')}h ${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
+            };
+
+            // Call it once immediately so the user doesn't see a blank timer
+            updateTimer(); 
+            // Then run it every second
+            const timerInterval = setInterval(updateTimer, 1000);
+    }
     }
 
     function showCipher() {
