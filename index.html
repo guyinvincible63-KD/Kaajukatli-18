@@ -21,9 +21,7 @@
         .btn:hover { transform: scale(1.1); background: #fff0f0; }
         input { padding: 15px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.5); text-align: center; font-family: 'Poppins'; outline: none; width: 280px; margin: 15px; background: rgba(255,255,255,0.9); color: #333; font-weight: bold; }
 
-        #welcomeScreen { background: linear-gradient(135deg, #ff4e50, #fc913a); z-index: 9999; }
         .cipher-box { background: rgba(0,0,0,0.3); padding: 40px; border-radius: 30px; border: 2px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-
         #slideshowContainer { background: radial-gradient(circle, #430000 0%, #000000 100%); z-index: 11000; }
         .slide-img { max-width: 85%; max-height: 65vh; border-radius: 20px; border: 5px solid white; box-shadow: 0 0 40px rgba(255,78,80,0.4); }
         .caption { margin-top: 30px; font-size: 2.2em; font-family: 'Caveat', cursive; color: var(--accent); text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
@@ -32,10 +30,11 @@
         .message-box { background: rgba(255,255,255,0.1); backdrop-filter: blur(15px); padding: 40px; border-radius: 25px; max-width: 650px; margin: 30px auto; border: 1px solid rgba(255,255,255,0.2); line-height: 1.8; font-size: 1.2em; }
         
         .balloon { position: fixed; bottom: -120px; width: 60px; height: 85px; border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%; z-index: 999; animation: floatUp 7s ease-in forwards; box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2); }
-        .balloon::after { content: ''; position: absolute; bottom: -25px; left: 29px; width: 2px; height: 30px; background: rgba(255,255,255,0.4); }
         @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-130vh) rotate(15deg); opacity: 0; } }
-
-        #unlockTimer { font-size: 1.2em; color: var(--accent); margin-bottom: 10px; font-weight: bold; }
+        
+        /* New Interactive Styles */
+        .question-title { font-family: 'Playfair Display'; font-size: 2.5em; margin-bottom: 20px; }
+        .stylish-final { font-family: 'Playfair Display'; font-size: 4em; color: var(--accent); text-shadow: 0 0 20px rgba(255,215,0,0.6); }
     </style>
 </head>
 <body>
@@ -46,16 +45,20 @@
         <button class="btn">Start Magic ✨</button>
     </div>
 
+    <div id="countdownGate" class="full-screen hidden" style="background: #000;">
+        <h1 class="glow" style="font-family: 'Playfair Display';">Patience, My Love...</h1>
+        <p>Good things take time. Wait for the magic to load.</p>
+        <div id="timerDisplay" style="font-size: 4em; color: var(--accent); margin: 20px;">10</div>
+        <button id="gateBtn" class="btn hidden" onclick="gateToCipher()">Proceed to Memories ➔</button>
+    </div>
+
     <div id="welcomeScreen" class="full-screen hidden">
         <h1 class="glow" style="font-family: 'Playfair Display'; margin-bottom: 20px;">For My Kaajukatli ❤️</h1>
         <div class="cipher-box">
-            <div id="unlockTimer">Please wait 10s...</div>
             <h3 style="color: var(--accent); font-family: 'Poppins';">🔓 The Chapter 18 Cipher</h3>
-            <p style="font-size: 0.9em; opacity: 0.9;">Decipher the numbers and answer it to unlock your memories:</p>
             <p style="letter-spacing: 4px; border: 2px dashed #fff; padding: 20px; font-size: 1.5em; background: rgba(0,0,0,0.2); border-radius: 15px; color: var(--accent);">
                 23-8-15 &nbsp; 9-19 &nbsp; 25-15-21-18 <br> 19-15-21-12-13-1-20-5 ?
             </p>
-            <p style="font-size: 0.85em; color: #ffd7d7; margin-top: 15px;"><i>(HINT: Answer in CAPITAL letters. No AI help! 😉)</i></p>
             <input type="text" id="cipherInput" placeholder="ENTER DECODED NAME...">
             <br><button class="btn" onclick="checkCipher()">Verify & Unlock ✨</button>
             <p id="cipherError" class="hidden" style="color: #ff8585; font-weight: bold; margin-top: 15px;">That's not it! Try again, my love. ❤️</p>
@@ -64,10 +67,7 @@
 
     <div id="successScreen" class="full-screen hidden">
         <h1 class="glow" style="font-size: 4em; font-family: 'Playfair Display';">Correct! ✅</h1>
-        <div style="max-width: 600px; font-size: 1.5em; line-height: 1.5;">
-            <p>You did it! This journey is a tribute to the most beautiful soul I know...</p>
-            <p style="font-family: 'Caveat'; font-size: 1.8em; color: var(--accent);">Welcome to your 18th Chapter. ❤️✨</p>
-        </div>
+        <p style="font-family: 'Caveat'; font-size: 1.8em; color: var(--accent);">Welcome to your 18th Chapter. ❤️✨</p>
     </div>
 
     <div id="categoryMenu" class="full-screen hidden">
@@ -75,10 +75,9 @@
         <button class="btn" onclick="startSection(1)">✨ The Classic Beauty</button>
         <button class="btn" onclick="toggleLock()">😜 Little Miss Dramebaaz</button>
         <button class="btn" onclick="startSection(3)">👩‍❤️‍👨 The Soulmate Saga</button>
-        
         <div id="funnyLock" class="hidden" style="margin-top: 20px;">
             <input type="password" id="funnyPass" placeholder="Secret Access Code...">
-            <br><button class="btn" style="padding: 10px 25px; font-size: 0.9em;" onclick="checkFunnyPass()">Unlock Folder 🔓</button>
+            <br><button class="btn" onclick="checkFunnyPass()">Unlock Folder 🔓</button>
         </div>
     </div>
 
@@ -94,14 +93,29 @@
     </div>
 
     <div id="mainContent">
-        <h1 class="glow" style="font-size: 3.5em; font-family: 'Playfair Display'; line-height: 1.2;">
-            HAPPIEST BIRTHDAY <br> MERI KAAJUKATLI 🎂💖✨
-        </h1>
-        <div style="font-size: 4em;">🎂❤️🥰</div>
+        <h1 class="glow" style="font-size: 3.5em; font-family: 'Playfair Display';">HAPPIEST BIRTHDAY <br> MERI KAAJUKATLI 🎂💖</h1>
         <div class="message-box">
             <span id="typing" style="font-family: 'Poppins'; font-weight: 300;"></span>
         </div>
-        <button class="btn" onclick="alert('Happy 18th Birthday Deepika ❤️ You are my favorite part of every day.')" style="margin-top: 20px;">Tap For A Surprise 💌</button>
+        <button class="btn" onclick="startQuestionnaire()" style="margin-top: 20px;">A Question for you 💌</button>
+    </div>
+
+    <div id="question1" class="full-screen hidden">
+        <h2 class="question-title">How many future years you wanna be with me?</h2>
+        <button class="btn" style="font-size: 2em;" onclick="nextQuestion()">∞</button>
+        <button class="btn" onclick="nextQuestion()">Infinite</button>
+    </div>
+
+    <div id="question2" class="full-screen hidden">
+        <h2 class="question-title">You really do mean your ans?</h2>
+        <button class="btn" onclick="finalPage()">Yes</button>
+        <button class="btn" onclick="threatenUser()">No</button>
+    </div>
+
+    <div id="finalLovePage" class="full-screen hidden" style="background: radial-gradient(#ff4e50, #000);">
+        <h1 class="stylish-final">I LOVE YOU DEEPIKA!</h1>
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5em;">MY WORLD 🌎❤️</h2>
+        <div style="font-size: 5em; margin-top: 20px;">😘💋🥰💖🔥</div>
     </div>
 
     <audio id="quizMusic" loop preload="auto"><source src="quiz.m4a" type="audio/mpeg"></audio>
@@ -109,74 +123,56 @@
 <script>
     let currentSectionId = 0, currentIndex = 0;
     let visited = { 1: false, 2: false, 3: false };
-    let canUnlock = false;
-    let timeLeft = 10;
 
+    // 1. Audio Start & Countdown Initiation
     function startExperience() {
         const music = document.getElementById('quizMusic');
-        music.play().catch(e => console.log("Music blocked or missing"));
+        music.play().catch(e => console.log("Music blocked"));
         document.getElementById('audioOverlay').classList.add('hidden');
-        document.getElementById('welcomeScreen').classList.remove('hidden');
+        document.getElementById('countdownGate').classList.remove('hidden');
         
-        // Start the 10 second countdown immediately after start magic
-        let timerElement = document.getElementById('unlockTimer');
-        let countdown = setInterval(() => {
+        let timeLeft = 10; // Change to your 16th Feb calculation later
+        const timerText = document.getElementById('timerDisplay');
+        const gateBtn = document.getElementById('gateBtn');
+        
+        let timer = setInterval(() => {
             timeLeft--;
-            if(timeLeft > 0) {
-                timerElement.innerText = `Please wait ${timeLeft}s...`;
-            } else {
-                timerElement.innerText = "You can proceed now! ✨";
-                canUnlock = true;
-                clearInterval(countdown);
+            timerText.innerText = timeLeft;
+            if(timeLeft <= 0) {
+                clearInterval(timer);
+                timerText.classList.add('hidden');
+                gateBtn.classList.remove('hidden');
             }
         }, 1000);
     }
 
-    // Function to fade music out smoothly
-    function fadeOutMusic() {
-        const music = document.getElementById('quizMusic');
-        let fadeInterval = setInterval(() => {
-            if (music.volume > 0.05) {
-                music.volume -= 0.05;
-            } else {
-                music.pause();
-                clearInterval(fadeInterval);
-            }
-        }, 100);
+    function gateToCipher() {
+        document.getElementById('countdownGate').classList.add('hidden');
+        document.getElementById('welcomeScreen').classList.remove('hidden');
     }
 
     function checkCipher() {
-        if(!canUnlock) {
-            alert("Good Things Take Time My Love 💗");
-            return;
-        }
-
         if(document.getElementById('cipherInput').value.trim().toUpperCase() === "KARTIK") {
-            fadeOutMusic(); 
-
-            document.getElementById('welcomeScreen').style.opacity = "0";
+            const music = document.getElementById('quizMusic');
+            // Smoothly fade or stop music as per previous requirement
+            music.pause();
+            
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            const success = document.getElementById('successScreen');
+            success.classList.remove('hidden');
             setTimeout(() => {
-                document.getElementById('welcomeScreen').classList.add('hidden');
-                const success = document.getElementById('successScreen');
-                success.classList.remove('hidden');
-                setTimeout(() => success.style.opacity = "1", 50);
-                setTimeout(() => {
-                    success.style.opacity = "0";
-                    setTimeout(() => {
-                        success.classList.add('hidden');
-                        document.getElementById('categoryMenu').classList.remove('hidden');
-                    }, 1000);
-                }, 3500);
-            }, 1000);
+                success.classList.add('hidden');
+                document.getElementById('categoryMenu').classList.remove('hidden');
+            }, 3000);
         } else {
             document.getElementById('cipherError').classList.remove('hidden');
         }
     }
 
     const sections = {
-        1: [{img: "Deepika1.jpg", msg: "Beginning of yours journey 🌱"}, {img: "Deepika2.jpg", msg: "My favorite smile in the whole world 😌💗"}, {img: "Deepika3.jpg", msg: "Just elegant ✨"}, {img: "Deepika4.jpg", msg: "ssshhh.... you are mine 🤫❤️"}, {img: "Deepika5.jpg", msg: "Doraemon 🐱‍🚀"}, {img: "Deepika6.jpg", msg: "Undoubtedly, you are the most beautiful girl 👑"}],
+        1: [{img: "Deepika1.jpg", msg: "Beginning of yours journey 🌱"}, {img: "Deepika2.jpg", msg: "My favorite smile 😌💗"}, {img: "Deepika3.jpg", msg: "Just elegant ✨"}, {img: "Deepika4.jpg", msg: "ssshhh.... you are mine 🤫❤️"}, {img: "Deepika5.jpg", msg: "Doraemon 🐱‍🚀"}, {img: "Deepika6.jpg", msg: "Undoubtedly, you are the most beautiful girl 👑"}],
         2: [{img: "Deepika7.jpg", msg: " Khooyi si  🔍💖"}, {img: "Deepika8.jpg", msg: "Kitni khush h yrr - aisi hi reh 😊🧿"}, {img: "Deepika9.jpg", msg: "Gehrii sochh.... 🤔💭"}, {img: "Deepika10.jpg", msg: "Chhota Don 😎👊"}, {img: "Deepika11.jpg", msg: "In my control now.... chin tapak dum dum 🪄😈"}, {img: "Deepika.jpg", msg: "My chubby princess 😘💝"}],
-        3: [{img: "Deepika12.jpg", msg: "Holding you - just a phenomenal experience 🤝💞"}, {img: "Deepika13.jpg", msg: "Looking into each other - our future 👁️🌅"}, {img: "Deepika14.jpg", msg: "An invisible bluetooth we have 📶💝"}, {img: "Deepika15.jpg", msg: "Just you and me 👩‍❤️‍👨"}, {img: "Deepika16.jpg", msg: "The deadly duoo 🔥⚔️"}, {img: "Deepika17.jpg", msg: "Made for each other ♾️🌹"}]
+        3: [{img: "Deepika12.jpg", msg: "Holding you 🤝💞"}, {img: "Deepika13.jpg", msg: "Looking into each other 👁️🌅"}, {img: "Deepika14.jpg", msg: "An invisible bluetooth 📶💝"}, {img: "Deepika15.jpg", msg: "Just you and me 👩‍❤️‍👨"}, {img: "Deepika16.jpg", msg: "The deadly duoo 🔥⚔️"}, {img: "Deepika17.jpg", msg: "Made for each other ♾️🌹"}]
     };
 
     function startSection(id) {
@@ -189,8 +185,7 @@
 
     function updateSlide() {
         const data = sections[currentSectionId][currentIndex];
-        const img = document.getElementById('currentSlideImg');
-        img.src = data.img;
+        document.getElementById('currentSlideImg').src = data.img;
         document.getElementById('currentCaption').innerText = data.msg;
     }
 
@@ -241,23 +236,44 @@
         }, 500);
     }
 
-    const typingText = "You are not just turning 18... you are stepping into your strength, your dreams, and your incredible light. Happy Birthday, Soulmate! ❤️";
-    let charIndex = 0;
     function typeWriter() {
-        if (charIndex < typingText.length) {
-            document.getElementById("typing").innerHTML += typingText.charAt(charIndex);
-            charIndex++; setTimeout(typeWriter, 55);
+        const typingText = "You are stepping into your strength, your dreams, and your incredible light. Happy Birthday, Soulmate! ❤️";
+        let charIndex = 0;
+        function write() {
+            if (charIndex < typingText.length) {
+                document.getElementById("typing").innerHTML += typingText.charAt(charIndex);
+                charIndex++; setTimeout(write, 55);
+            }
         }
+        write();
     }
 
     function toggleLock() { document.getElementById('funnyLock').classList.toggle('hidden'); }
     function checkFunnyPass() {
-        if(document.getElementById('funnyPass').value === "Let's Deep Dive") {
-            startSection(2);
-        } else {
-            alert("Ask Deepika for the secret code... 🤫❤️");
-        }
+        if(document.getElementById('funnyPass').value === "Let's Deep Dive") startSection(2);
+        else alert("Ask Deepika for the secret code... 🤫❤️");
+    }
+
+    // Questionnaire Logic
+    function startQuestionnaire() {
+        document.getElementById('mainContent').classList.add('hidden');
+        document.getElementById('question1').classList.remove('hidden');
+    }
+
+    function nextQuestion() {
+        document.getElementById('question1').classList.add('hidden');
+        document.getElementById('question2').classList.remove('hidden');
+    }
+
+    function threatenUser() {
+        alert("khabardar y option choose kiya toh 🔪");
+    }
+
+    function finalPage() {
+        document.getElementById('question2').classList.add('hidden');
+        document.getElementById('finalLovePage').classList.remove('hidden');
+        spawnBalloons();
     }
 </script>
 </body>
-</html>
+            </html>
