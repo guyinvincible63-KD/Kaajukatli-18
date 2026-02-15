@@ -6,60 +6,83 @@
     <title>Chapter 18 – Deepika ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&family=Poppins:wght@300;500;700&family=Caveat:wght@700&family=Dancing+Script:wght@700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #ff4e50; --accent: #ffd700; --purple-bg: #1a0033; --neon: #00ffcc; --parchment: #fdf5e6; }
+        :root { --primary: #ff4e50; --accent: #ffd700; --royal: #1a0033; --neon: #00ffcc; --parchment: #fdf5e6; --gold: #d4af37; }
         body { margin: 0; padding: 0; min-height: 100vh; background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1); background-size: 400% 400%; animation: romanticBG 12s ease infinite; font-family: 'Poppins', sans-serif; text-align: center; color: white; overflow-x: hidden; }
         @keyframes romanticBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
         .hidden { display: none !important; }
         .full-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
         
-        /* Audio & Entry */
+        /* Audio & Glow */
         #audioOverlay { background: rgba(0,0,0,0.95); z-index: 20000; cursor: pointer; }
         .glow { text-shadow: 0 0 10px #fff, 0 0 20px var(--primary); animation: pulse 2s infinite alternate; }
         @keyframes pulse { from { text-shadow: 0 0 10px #fff; } to { text-shadow: 0 0 30px var(--primary); } }
 
-        /* General UI */
-        .btn { background: white; color: var(--primary); border: none; padding: 15px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; margin: 10px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-family: 'Poppins'; z-index: 10; }
-        .btn:hover { transform: scale(1.1); background: #fff0f0; box-shadow: 0 0 20px var(--neon); }
+        /* Buttons & Inputs */
+        .btn { background: white; color: var(--primary); border: none; padding: 15px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; margin: 10px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-family: 'Poppins'; }
+        .btn:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--accent); }
         input { padding: 15px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.5); text-align: center; font-family: 'Poppins'; outline: none; width: 280px; margin: 15px; background: rgba(255,255,255,0.9); color: #333; font-weight: bold; }
 
-        /* Lock Screen */
+        /* Timer & Cipher */
         #dateGate { background: radial-gradient(circle, #2c3e50 0%, #000000 100%); }
-        #countdownTimer { font-size: 4em; font-family: 'Playfair Display'; color: var(--accent); margin: 20px 0; }
-
+        #countdownTimer { font-size: 3.5em; font-family: 'Playfair Display'; color: var(--accent); margin: 20px 0; }
+        
         /* Slideshow */
         #slideshowContainer { background: radial-gradient(circle, #430000 0%, #000000 100%); z-index: 11000; }
-        .slide-img { max-width: 85%; max-height: 65vh; border-radius: 20px; border: 5px solid white; box-shadow: 0 0 40px rgba(255,78,80,0.4); }
-        .caption { margin-top: 30px; font-size: 2.2em; font-family: 'Caveat', cursive; color: var(--accent); text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
+        .slide-img { max-width: 85%; max-height: 60vh; border-radius: 20px; border: 5px solid white; box-shadow: 0 0 40px rgba(255,78,80,0.4); }
+        .caption { margin-top: 30px; font-size: 2.2em; font-family: 'Caveat', cursive; color: var(--accent); }
 
-        /* Final Page Main */
-        #mainContent { background: linear-gradient(to bottom, #1a0033, #2d004d, #000b1a); }
-        .message-box { background: rgba(0,0,0,0.5); backdrop-filter: blur(15px); padding: 35px; border-radius: 25px; max-width: 650px; border: 1px solid var(--neon); line-height: 1.8; font-size: 1.15em; z-index: 2; position: relative; }
+        /* POST-MEMORIES / MAIN PAGE */
+        .royal-bg { background: radial-gradient(circle, #2d004d 0%, #1a0033 100%); }
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.8; animation: crash 2s linear infinite; }
+        @keyframes crash { 0% { transform: translateY(-10vh) translateX(0); opacity: 1; } 100% { transform: translateY(110vh) translateX(20vw); opacity: 0; } }
 
-        /* Sidebar Wall of Love */
-        #loveSidebar { position: fixed; width: 100px; height: 100px; z-index: 1001; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .love-icon { font-size: 50px; filter: drop-shadow(0 0 15px var(--neon)); transition: 0.3s; }
+        /* Wall of Love Sidebar */
+        #loveSidebar { position: fixed; width: 120px; height: 120px; z-index: 1001; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .love-icon { font-size: 50px; filter: drop-shadow(0 0 15px var(--primary)); }
+        
         #lovePop { background: rgba(10, 0, 20, 0.98); z-index: 5000; overflow-y: auto; padding: 80px 20px; }
         .nickname { font-family: 'Dancing Script', cursive; font-size: 2.2em; color: var(--accent); margin: 10px; display: inline-block; animation: fadeIn 0.8s forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Verses Parchment */
-        #versesModal { background: rgba(0,0,0,0.9); z-index: 7000; }
-        .parchment-card { background: var(--parchment); color: #332211; padding: 40px; border-radius: 5px; max-width: 600px; max-height: 80vh; overflow-y: auto; box-shadow: inset 0 0 50px rgba(0,0,0,0.2), 0 20px 40px rgba(0,0,0,0.5); font-family: 'Playfair Display', serif; line-height: 1.8; position: relative; border: 1px solid #d4af37; text-align: left; }
-        .hindi-text { font-family: 'Noto Sans Devanagari', serif; font-size: 1.3em; line-height: 2; color: #441111; font-weight: 700; }
+        /* Parchment Style Poems */
+        .parchment-card { background: var(--parchment); color: #332211; padding: 40px; border-radius: 5px; max-width: 600px; max-height: 80vh; overflow-y: auto; box-shadow: inset 0 0 50px rgba(0,0,0,0.2), 0 20px 40px rgba(0,0,0,0.5); font-family: 'Playfair Display', serif; text-align: left; line-height: 1.8; border: 2px solid var(--gold); }
+        .hindi-poem { font-family: 'Noto Sans Devanagari', serif; font-size: 1.4em; color: #5a1a1a; line-height: 2; font-weight: bold; }
 
-        /* D&K Geographic Animation */
-        .dk-stage { position: relative; width: 350px; height: 450px; display: flex; justify-content: center; align-items: center; }
-        .dk-logo-final { font-size: 4.5em; font-family: 'Playfair Display'; color: var(--accent); opacity: 0; text-shadow: 0 0 30px var(--accent); z-index: 5; }
-        .anim-line { position: absolute; background: var(--neon); box-shadow: 0 0 10px var(--neon); transition: 1s linear; }
-        .location-tag { position: absolute; font-family: 'Caveat'; font-size: 1.8em; color: white; opacity: 0; transition: 0.5s; }
-        .meeting-point { position: absolute; bottom: 20px; font-weight: bold; font-size: 2.5em; color: var(--accent); opacity: 0; text-shadow: 0 0 20px var(--accent); }
+        /* Final Light Theme Page */
+        #finalLovePage { 
+            background: linear-gradient(135deg, #fff0f5 0%, #fff5e6 50%, #ffe6e6 100%); 
+            color: #333;
+            overflow-y: auto; 
+            justify-content: flex-start; 
+            padding-top: 40px;
+        }
+        
+        .deco-circle { position: absolute; border-radius: 50%; border: 2px solid rgba(0,0,0,0.05); z-index: 0; }
 
-        /* Particles */
-        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: crash 2s linear infinite; }
-        @keyframes crash { 0% { transform: translateY(-10vh); opacity: 1; } 100% { transform: translateY(110vh); opacity: 0; } }
-        .balloon { position: fixed; bottom: -120px; width: 60px; height: 85px; border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%; z-index: 999; animation: floatUp 7s ease-in forwards; }
-        @keyframes floatUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-130vh); opacity: 0; } }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Map Stage */
+        .stage-container { position: relative; width: 100%; height: 450px; margin-top: 20px; flex-shrink: 0; }
+        
+        /* BLACK LOGO */
+        .logo-box { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); width: 130px; height: 130px; border: 4px solid #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display'; font-size: 3.5em; color: #000; box-shadow: 0 0 20px rgba(0,0,0,0.2); z-index: 10; opacity: 0; background: rgba(255,255,255,0.5); backdrop-filter: blur(5px); }
+        
+        /* SUPPORTING COLOR LINES (Dark Pink) */
+        .line-geo { position: absolute; background: #c71585; box-shadow: 0 0 5px #c71585; transition: 1.2s ease-out; z-index: 5; }
+        .label-geo { position: absolute; font-family: 'Caveat'; font-size: 2.2em; color: #4a0434; opacity: 0; transition: 0.8s; font-weight: bold; }
+        
+        .final-center { position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); font-size: 3em; font-weight: bold; color: #000; opacity: 0; z-index: 10; font-family: 'Playfair Display'; }
+
+        /* Wish Box */
+        .final-wish-container {
+            margin-top: 20px; width: 90%; max-width: 800px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid #d4af37; border-radius: 20px; padding: 30px;
+            opacity: 0; transition: 1.5s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative; z-index: 20; margin-bottom: 50px;
+        }
+
+        #typingEffect { font-family: 'Caveat', cursive; font-weight: bold; font-size: 1.4em; color: white; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -70,42 +93,43 @@
 
     <div id="audioOverlay" class="full-screen" onclick="startExperience()">
         <h1 class="glow" style="font-family: 'Playfair Display'; font-size: 3.5em;">Chapter 18 ❤️</h1>
-        <p style="font-size: 1.2em; letter-spacing: 1px;">Click to enter Deepika's World</p>
-        <button class="btn">Start Magic ✨</button>
+        <p>A Journey for Deepika</p>
+        <button class="btn">Enter World ✨</button>
     </div>
 
     <div id="dateGate" class="full-screen hidden">
-        <h2 class="glow" style="font-family: 'Playfair Display';">Good things take time, My Love... ⏳</h2>
+        <h2 class="glow" style="font-family: 'Playfair Display';">Ohh! Look who has come 🤭👀</h2>
         <div id="countdownTimer">00:00:00</div>
-        <button id="lockBtn" class="btn" onclick="patienceCheck()">Enter The World ➔</button>
-        <button id="proceedToCipher" class="btn hidden" onclick="showCipher()">Unlock My Memories ➔</button>
+        <button id="patienceBtn" class="btn" onclick="alert('Good Things Take Time My Love ⏳❤️')">Proceed ➔</button>
+        <button id="realProceed" class="btn hidden" onclick="showCipher()">Unlock Memories ➔</button>
     </div>
 
     <div id="welcomeScreen" class="full-screen hidden">
-        <h1 class="glow" style="font-family: 'Playfair Display'; margin-bottom: 20px;">For My Kaajukatli ❤️</h1>
-        <div class="cipher-box">
-            <h3 style="color: var(--accent); font-family: 'Poppins';">🔓 The Chapter 18 Cipher</h3>
-            <p style="letter-spacing: 4px; border: 2px dashed #fff; padding: 20px; font-size: 1.5em; background: rgba(0,0,0,0.2); border-radius: 15px; color: var(--accent);">
+        <h1 class="glow">For My Kaajukatli ❤️</h1>
+        <div style="background: rgba(0,0,0,0.3); padding: 40px; border-radius: 30px;">
+            <p style="letter-spacing: 4px; border: 2px dashed #fff; padding: 20px; font-size: 1.5em; color: var(--accent);">
                 23-8-15 &nbsp; 9-19 &nbsp; 25-15-21-18 <br> 19-15-21-12-13-1-20-5 ?
             </p>
             <input type="text" id="cipherInput" placeholder="ENTER DECODED NAME...">
-            <br><button class="btn" onclick="checkCipher()">Verify & Unlock ✨</button>
+            <br>
+            <button class="btn" onclick="checkCipher()">Verify ✨</button>
+            <br>
+            <button class="btn" style="font-size: 0.8em; padding: 8px 15px; background: transparent; border: 1px solid white; color: white;" onclick="alert('Hint: A=1, B=2... No AI for you Deepika... 🤖🚫')">Need a Hint? 💡</button>
         </div>
     </div>
 
     <div id="successScreen" class="full-screen hidden">
-        <h1 class="glow" style="font-size: 4em; font-family: 'Playfair Display';">Correct! ✅</h1>
-        <p style="font-family: 'Caveat'; font-size: 1.8em; color: var(--accent);">Welcome to your 18th Chapter. ❤️✨</p>
+        <h1 class="glow" style="font-size: 3em; font-family: 'Playfair Display';">Hurrey - And this soulmate presents a surprise for you 🥳✨</h1>
     </div>
 
     <div id="categoryMenu" class="full-screen hidden">
-        <h2 class="glow" style="font-family: 'Playfair Display'; font-size: 2.5em; margin-bottom: 40px;">Choose a Storyline ✨</h2>
+        <h2 class="glow" style="font-size: 2.5em; margin-bottom: 40px;">Choose a Storyline ✨</h2>
         <button class="btn" onclick="startSection(1)">✨ The Classic Beauty</button>
-        <button class="btn" onclick="toggleLock()">😜 Little Miss Dramebaaz</button>
+        <button class="btn" onclick="document.getElementById('funnyLock').classList.toggle('hidden')">😜 Little Miss Dramebaaz</button>
         <button class="btn" onclick="startSection(3)">👩‍❤️‍👨 The Soulmate Saga</button>
         <div id="funnyLock" class="hidden">
             <input type="password" id="funnyPass" placeholder="Secret Access Code...">
-            <br><button class="btn" onclick="checkFunnyPass()">Unlock Folder 🔓</button>
+            <br><button class="btn" onclick="checkFunnyPass()">Unlock 🔓</button>
         </div>
     </div>
 
@@ -116,125 +140,113 @@
     </div>
 
     <div id="navPopup" class="full-screen hidden" style="background: rgba(0,0,0,0.95);">
-        <h2 class="glow" style="font-family: 'Playfair Display';">Where to next, Deepika? ✨</h2>
+        <h2 class="glow">Where to next, Deepika? ✨</h2>
         <div id="popupOptions"></div>
     </div>
 
-    <div id="mainContent" class="full-screen hidden">
+    <div id="mainContent" class="full-screen royal-bg hidden">
         <div id="starsContainer"></div>
         <div id="loveSidebar" onclick="toggleLovePop()">
             <div class="love-icon">💖</div>
-            <p style="font-size: 0.6em; font-weight: bold; color: var(--neon); text-align: center;">VERSES FOR YOU</p>
+            <p style="font-size: 0.7em; font-weight: bold; color: var(--neon); margin-top: 5px;">WALL OF LOVE</p>
         </div>
-
-        <h1 style="font-family: 'Dancing Script', cursive; font-size: 3.5em; color: var(--accent);">Happy Birthday Kaajukatli! 🎂</h1>
-        <div class="message-box"><span id="typing"></span></div>
-        <button id="versesBtn" class="btn hidden" onclick="openVerses()">Read My Verses 📜</button>
+        
+        <h1 style="font-family: 'Dancing Script'; font-size: 3.5em; color: var(--accent); margin-bottom: 20px;">HAPPIEST BIRTHDAY MERI KAAJUKATLI 🎂🍬</h1>
+        <div id="mainMsgBox" style="background: rgba(0,0,0,0.4); padding: 30px; border-radius: 20px; max-width: 700px; font-size: 1.3em; border: 1px solid var(--neon);">
+            <span id="typingEffect"></span>
+        </div>
     </div>
 
-    <div id="versesModal" class="full-screen hidden">
+    <div id="lovePop" class="full-screen hidden"></div>
+
+    <div id="versesModal" class="full-screen hidden" style="background: rgba(0,0,0,0.9);">
         <div class="parchment-card">
-            <div id="poemContent"></div>
-            <hr style="border: 0; border-top: 1px solid #d4af37; margin: 20px 0;">
-            <button id="poemActionBtn" class="btn" style="background: #332211; color: #fdf5e6; width: 100%;"></button>
+            <div id="poemTextBody"></div>
+            <hr style="border: 0; border-top: 1px solid var(--gold); margin: 20px 0;">
+            <button id="poemAction" class="btn" style="background: #332211; color: #fdf5e6; width: 100%;"></button>
         </div>
     </div>
-
-    <div id="lovePop" class="full-screen hidden" onclick="toggleLovePop()"></div>
 
     <div id="qPage1" class="full-screen hidden">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5em; color: white;">How many Birthday's do you wanna celebrate with me? 🥺</h2>
+        <h2 style="font-size: 2.5em;">How many Birthday's do you wanna celebrate with me? 🥺</h2>
         <button class="btn" onclick="showQuestion(2)" style="font-size: 2.5em;">∞</button>
         <button class="btn" onclick="showQuestion(2)">INFINITE</button>
     </div>
 
     <div id="qPage2" class="full-screen hidden">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5em;">Do you really think of me that much? 🧐</h2>
+        <h2 style="font-size: 2.5em;">Do you really think of me that much? 🧐</h2>
         <button class="btn" onclick="startFinalSequence()">YES! ❤️</button>
         <button class="btn" onclick="alert('Khabardar ye option choose kiya toh 🔪')">NO</button>
     </div>
 
     <div id="finalLovePage" class="full-screen hidden">
-        <div class="dk-stage">
-            <div id="dkLogoFinal" class="dk-logo-final">D & K</div>
-            <div id="lineL" class="anim-line" style="height:2px; width:0; top:50%; right:50%;"></div>
-            <div id="lineR" class="anim-line" style="height:2px; width:0; top:50%; left:50%;"></div>
-            <div id="tagB" class="location-tag" style="top:44%; left:0;">Bihar</div>
-            <div id="tagM" class="location-tag" style="top:44%; right:0;">Maharashtra</div>
-            <div id="lineDL" class="anim-line" style="width:2px; height:0; left:12%; top:50%;"></div>
-            <div id="lineDR" class="anim-line" style="width:2px; height:0; right:12%; top:50%;"></div>
-            <div id="n16" class="location-tag" style="bottom:20%; left:8%;">16</div>
-            <div id="n20" class="location-tag" style="bottom:20%; right:8%;">20</div>
-            <div id="lineML" class="anim-line" style="height:2px; width:0; bottom:10%; left:12%;"></div>
-            <div id="lineMR" class="anim-line" style="height:2px; width:0; bottom:10%; right:12%;"></div>
-            <div id="d21" class="meeting-point">21 Dec</div>
+        <div class="deco-circle" style="width: 300px; height: 300px; top: -50px; left: -50px;"></div>
+        <div class="deco-circle" style="width: 500px; height: 500px; bottom: -100px; right: -100px;"></div>
+
+        <div class="stage-container">
+            <div id="geoLogo" class="logo-box">D & K</div>
+            
+            <div id="lSideL" class="line-geo" style="height:2px; width:0; top:40%; right:55%;"></div>
+            <div id="lSideR" class="line-geo" style="height:2px; width:0; top:40%; left:55%;"></div>
+            <div id="txtBihar" class="label-geo" style="top:34%; left:5%;">Bihar</div>
+            <div id="txtMaha" class="label-geo" style="top:34%; right:5%;">Maharashtra</div>
+
+            <div id="lDownL" class="line-geo" style="width:2px; height:0; left:10%; top:40%;"></div>
+            <div id="lDownR" class="line-geo" style="width:2px; height:0; right:10%; top:40%;"></div>
+            <div id="txt16" class="label-geo" style="bottom:15%; left:9%;">16</div>
+            <div id="txt20" class="label-geo" style="bottom:15%; right:9%;">20</div>
+
+            <div id="lMeetL" class="line-geo" style="height:2px; width:0; bottom:10%; left:10%;"></div>
+            <div id="lMeetR" class="line-geo" style="height:2px; width:0; bottom:10%; right:10%;"></div>
+            
+            <div id="meetFinal" class="final-center">21 Dec</div>
         </div>
 
-        <div id="finalContentArea" class="hidden" style="margin-top: 20px;">
-            <h1 class="glow" style="color: var(--neon); font-size: 2.8em;">ILY DEEPIKA! 😘💖💐🥰💌</h1>
-            <p id="longWish" style="font-family: 'Playfair Display'; font-size: 1.2em; max-width: 750px; line-height: 1.6; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px;"></p>
-            <button class="btn glow" onclick="window.open('https://digibouquet.vercel.app/bouquet/3f6e53da-ef6d-4b64-9e1a-389729da7fe7')">Tap for a Surprise 💐</button>
+        <h1 id="ilyTop" style="font-family: 'Playfair Display'; font-size: 3em; color: #d63384; opacity: 0; transition: 1s; margin: 10px 0;">I LOVE YOU DEEPIKA!! 😘💝💐🥰💌</h1>
+
+        <div id="finalWishBox" class="final-wish-container">
+            <p id="wishText" style="line-height: 1.8; color: #333; font-size: 1.1em;"></p>
+            <button class="btn" style="background: #2c003e; color: white; margin-top:20px;" onclick="window.open('https://digibouquet.vercel.app/bouquet/3f6e53da-ef6d-4b64-9e1a-389729da7fe7')">Tap for a Surprise 💐</button>
         </div>
     </div>
 
 <script>
-    // --- TIMER TOGGLE ---
-    const TEST_MODE = true; // SET TO TRUE TO TEST WITH 10 SECONDS
+    const TEST_MODE = true; // CHANGE TO FALSE FOR REAL DATE
 
     let currentSectionId = 0, currentIndex = 0, currentPoemIdx = 0;
     let visited = { 1: false, 2: false, 3: false };
     let sidebarMoving = true;
     const quizAud = document.getElementById('quizMusic'), memAud = document.getElementById('memoriesMusic'), finAud = document.getElementById('finalMusic');
 
+    // NICKNAMES LIST
+    const nicknames = ["Sweetheart", "Doraemon", "Kaajukatli", "Gulab Jamun", "Sweety", "Natkhat", "My Other Half", "My Life", "Cutie pie", "My soul", "My heartbeat", "Raajkumarii", "Meri bachii", "My Moon"];
+
     const poems = [
-        { title: "Our Journey (Archives) 🌸", content: `Bestowed upon a flower🌸, <br>Struck by the fragrance she showers🌿.<br>A moment to grasp the metaphor—<br>Her simple smile swirls my heart’s core❤️‍🔥.<br>Blooming, my soul becomes ecstatic✨.<br><br>Her gaze whispers romance💫,<br>Bringing peace to life’s expanse🕊️.<br>Curves flow from neck down to feet💃,<br>Where every delicacy meets perfection sweet🍃.<br>Darling, your lips, a place to die💋,<br>The ultimate moon with no smudge in the sky🌙,<br>Filling life with love and gentle rest🌹.<br><br>The night we shared,<br>By the riverbank side🏞️,<br>Cuddled close on the steps,<br>Warmth growing deep inside🔥—<br>That pace embracing us,<br>Leading to the magical bliss,<br>Caught in the moment’s blush😊,<br>Our first ever kiss💏.<br><br>The eyes she holds👀,<br>The cheeks so soft and fair,<br>The curves she gently got—<br>A dreamy heaven rare🌈.<br><br>The magic that the dawn encloses🌅,<br>The same magic she lightly sprinkles✨,<br>A tender touch that never closes,<br>Awakening the child within twinkles🎇.<br><br>Every tear in your eyes😔<br>Makes my heart ache💔,<br>A promise that never dies—<br>To keep her happiness awake🌟.<br><br>The moment we shared<br>on the verge of the hill⛰️,<br>sinking my heart<br>on the instrumental touch<br>realizing how much I have received<br>as I got you with me💞.<br><br>You are my feel-good charm✨,<br>The atmosphere you create<br>Holds something so evident—<br>The girl for whom I dared<br>To bid adieu to my dream job🎯,<br>Though I must pursue it still,<br>To make you forever mine💖.<br><br>You are the most important,<br>I prioritize you always🥇,<br>Want you to hold me close🤗,<br>Beside a twinkling future✨,<br>With a torchlight to cherish<br>Our moments in success🏆.<br><br>You are my wife already,<br>Living in my heart and mind—<br>Just wait and watch, my love,<br>Our journey yet to unwind💑.<br><br>The nonchalant Am I? Nahh😉;<br>Feels the velvety softness in every beat💓,<br>Charm intact as if we both are soul mates🔗.<br><br>Devoted to be a moonlight🌕,<br>Ending like a sweetheart’s twilight...🌅<br><br>Now, a breath, a glance,<br>Where our lips will follow...` },
-        { title: "Magical Experience ✨", content: `Isnt the nature indicating somethin,<br>Moon seems to be more shiny.<br>Even the beauty lost its weight,<br>Been replaced by the the irreplaceable.<br>Yeah its the name, that I chase for ,<br>Deeply in hearts of optimistic forest,<br>The name of my flower, Deepika.<br><br><hr style="border:1px dashed #d4af37"><br>Dizziness felt<br>And darkness arose<br>Just in time, the tale-lore spoke<br>Enough of the fairy<br>The magic spread thin<br>Just to keep me awake<br>And rooting still <br>For the together self` },
-        { title: "वो फूल 🌸", content: `<div class="hindi-text">दुनिया रंगीन लगी थी पहले,<br>पर सब कुछ थोड़ा फीका सा निकला,<br>उसी भीड़ में कहीं<br>मुझे एक फूल सा चेहरा दिखा।<br><br>अब बात बस उसकी…<br><br>वो फूल-रूपी, क्या कहूँ उसे,<br>आँखें जैसे मोती भी शरमा जाएँ,<br>गहराई ऐसी कि देखूँ तो<br>खुद को ही भूल जाऊँ कहीं। 🤍<br><br>उसकी हँसी… पूरी नहीं,<br>थोड़ी दिल से, थोड़ी सी धीमी,<br>पर अजीब सा सुकून दे जाती,<br>जैसे शाम की हल्की सी नीली। 🌙<br><br>बाल कभी सँवरे, कभी बिखरे,<br>पर अच्छे लगते वैसे ही,<br>जैसे हवा ने छूकर<br>अपना नाम लिख दिया हो वहीं।<br><br>हाथ… जिन्हें पकड़ने का मन करे,<br>पर डर भी लगे ज़रा,<br>कि कहीं ये सपना न हो<br>या मैं ही कुछ ज़्यादा।<br><br>वो परफेक्ट नहीं है शायद दूसरों के लिए,<br>पर मुझे तो वैसी ही सही,<br>थोड़ी सी चुप, थोड़ी सी जिद्दी,<br>और बाकी सब… बस वही। 🌸✨</div>` }
+        { title: "Our Journey (Archives) 🌸", content: `Bestowed upon a flower🌸,<br>Struck by the fragrance she showers🌿.<br>A moment to grasp the metaphor—<br>Her simple smile swirls my heart’s core❤️‍🔥.<br>Blooming, my soul becomes ecstatic✨.<br><br>Her gaze whispers romance💫,<br>Bringing peace to life’s expanse🕊️.<br>Curves flow from neck down to feet💃,<br>Where every delicacy meets perfection sweet🍃.<br>Darling, your lips, a place to die💋,<br>The ultimate moon with no smudge in the sky🌙,<br>Filling life with love and gentle rest🌹.<br><br>The night we shared,<br>By the riverbank side🏞️,<br>Cuddled close on the steps,<br>Warmth growing deep inside🔥—<br>That pace embracing us,<br>Leading to the magical bliss,<br>Caught in the moment’s blush😊,<br>Our first ever kiss💏.<br><br>The eyes she holds👀,<br>The cheeks so soft and fair,<br>The curves she gently got—<br>A dreamy heaven rare🌈.<br><br>The magic that the dawn encloses🌅,<br>The same magic she lightly sprinkles✨,<br>A tender touch that never closes,<br>Awakening the child within twinkles🎇.<br><br>Every tear in your eyes😔<br>Makes my heart ache💔,<br>A promise that never dies—<br>To keep her happiness awake🌟.<br><br>The moment we shared<br>on the verge of the hill⛰️,<br>sinking my heart<br>on the instrumental touch<br>realizing how much I have received<br>as I got you with me💞.<br><br>You are my feel-good charm✨,<br>The atmosphere you create<br>Holds something so evident—<br>The girl for whom I dared<br>To bid adieu to my dream job🎯,<br>Though I must pursue it still,<br>To make you forever mine💖.<br><br>You are the most important,<br>I prioritize you always🥇,<br>Want you to hold me close🤗,<br>Beside a twinkling future✨,<br>With a torchlight to cherish<br>Our moments in success🏆.<br><br>You are my wife already,<br>Living in my heart and mind—<br>Just wait and watch, my love,<br>Our journey yet to unwind💑.<br><br>The nonchalant Am I? Nahh😉;<br>Feels the velvety softness in every beat💓,<br>Charm intact as if we both are soul mates🔗.<br><br>Devoted to be a moonlight🌕,<br>Ending like a sweetheart’s twilight...🌅<br><br>Now, a breath, a glance,<br>Where our lips will follow...` },
+        { title: "Magical Experience ✨", content: `Isnt the nature indicating somethin,<br>Moon seems to be more shiny.<br>Even the beauty lost its weight,<br>Been replaced by the the irreplaceable.<br>Yeah its the name, that I chase for ,<br>Deeply in hearts of optimistic forest,<br>The name of my flower, Deepika.<br><br><hr><br>Dizziness felt<br>And darkness arose<br>Just in time, the tale-lore spoke<br>Enough of the fairy<br>The magic spread thin<br>Just to keep me awake<br>And rooting still <br>For the together self` },
+        { title: "वो फूल 🌸", content: `<div class="hindi-poem">दुनिया रंगीन लगी थी पहले,<br>पर सब कुछ थोड़ा फीका सा निकला,<br>उसी भीड़ में कहीं<br>मुझे एक फूल सा चेहरा दिखा।<br><br>उसकी हँसी… पूरी नहीं,<br>थोड़ी दिल से, थोड़ी सी धीमी,<br>पर अजीब सा सुकून दे जाती,<br>जैसे शाम की हल्की सी नीली। 🌙<br><br>बाल कभी सँवरे, कभी बिखरे,<br>पर अच्छे लगते वैसे ही,<br>जैसे हवा ने छूकर<br>अपना नाम लिख दिया हो वहीं।<br><br>हाथ… जिन्हें पकड़ने का मन करे,<br>पर डर भी लगे ज़रा,<br>कि कहीं ये सपना न हो<br>या मैं ही कुछ ज़्यादा।<br><br>वो परफेक्ट नहीं है शायद दूसरों के लिए,<br>पर मुझे तो वैसी ही सही,<br>थोड़ी सी चुप, थोड़ी सी जिद्दी,<br>और बाकी सब… बस वही। 🌸✨</div>` }
     ];
 
-
-function startExperience() {
-    document.getElementById('audioOverlay').classList.add('hidden');
-    document.getElementById('dateGate').classList.remove('hidden');
-    quizAud.play();
-
-    // FIXED LOGIC: Test Mode now takes absolute priority
-    if (TEST_MODE) {
-        let t = 10;
-        document.getElementById('countdownTimer').innerText = t + "s";
-        const iv = setInterval(() => {
-            t--; 
-            document.getElementById('countdownTimer').innerText = t + "s";
-            if(t <= 0){ 
-                clearInterval(iv); 
-                document.getElementById('lockBtn').classList.add('hidden'); 
-                document.getElementById('proceedToCipher').classList.remove('hidden'); 
-                document.getElementById('countdownTimer').innerText = "It's Time! ❤️";
-            }
-        }, 1000);
-    } else {
-        const target = new Date("February 16, 2026 00:00:00").getTime();
-        updateCountdown(target);
-    }
-}
-
-function updateCountdown(target) {
-    const iv = setInterval(() => {
-        const diff = target - new Date().getTime();
-        if (diff <= 0) { 
-            clearInterval(iv);
-            document.getElementById('lockBtn').classList.add('hidden'); 
-            document.getElementById('proceedToCipher').classList.remove('hidden'); 
-            return; 
+    function startExperience() {
+        document.getElementById('audioOverlay').classList.add('hidden');
+        document.getElementById('dateGate').classList.remove('hidden');
+        quizAud.play();
+        if (TEST_MODE) {
+            let t = 10;
+            const iv = setInterval(() => {
+                t--; document.getElementById('countdownTimer').innerText = t + "s";
+                if(t<=0){ clearInterval(iv); document.getElementById('patienceBtn').classList.add('hidden'); document.getElementById('realProceed').classList.remove('hidden'); }
+            }, 1000);
+        } else {
+            const target = new Date("February 16, 2026 00:00:00").getTime();
+            setInterval(() => {
+                const diff = target - new Date().getTime();
+                if(diff<=0){ document.getElementById('patienceBtn').classList.add('hidden'); document.getElementById('realProceed').classList.remove('hidden'); return; }
+                const h = Math.floor(diff/(1000*60*60)), m = Math.floor((diff%(1000*60*60))/(1000*60)), s = Math.floor((diff%(1000*60))/1000);
+                document.getElementById('countdownTimer').innerText = `${h}h ${m}m ${s}s`;
+            }, 1000);
         }
-        const h = Math.floor(diff/(1000*60*60)), 
-              m = Math.floor((diff%(1000*60*60))/(1000*60)), 
-              s = Math.floor((diff%(1000*60))/1000);
-        document.getElementById('countdownTimer').innerText = `${h}h ${m}m ${s}s`;
-    }, 1000);
     }
-
-    function patienceCheck() { alert("Good Things Take Time My Love ⏳❤️"); }
 
     function showCipher() {
         document.getElementById('dateGate').classList.add('hidden');
@@ -291,39 +303,52 @@ function updateCountdown(target) {
         document.getElementById('navPopup').classList.add('hidden');
         document.getElementById('mainContent').classList.remove('hidden');
         moveSidebar(); createStars(); spawnBalloons();
-        let s = "Deepika, stepping into your 18th year... ❤️", i=0;
-        function t(){ if(i<s.length){ document.getElementById('typing').innerHTML+=s.charAt(i); i++; setTimeout(t,50); } } t();
+        let s = "Happiest Birthday Kaajukatli! 🎂🍬 Finally 18 huh? Ab legal ho gayi ho toh don't think you can boss me around (okay, maybe a little 🤏). Stop eating my brain and start eating cake. Jokes aside, you are my favorite trouble. Always stay this weird and lovable! ❤️", i=0;
+        function t(){ if(i<s.length){ document.getElementById('typingEffect').innerHTML+=s.charAt(i); i++; setTimeout(t,50); } } t();
     }
 
     function moveSidebar() {
         if(!sidebarMoving) return;
         const s = document.getElementById('loveSidebar');
-        s.style.top = Math.random()*80+10+"%"; s.style.left = Math.random()*80+10+"%";
-        s.style.transition = "2s ease";
-        setTimeout(moveSidebar, 2000);
+        s.style.top = Math.random()*70+15+"%"; s.style.left = Math.random()*70+15+"%";
+        s.style.transition = "2.5s ease";
+        setTimeout(moveSidebar, 2500);
     }
 
+    // FIXED WALL OF LOVE LOGIC
     function toggleLovePop() {
         sidebarMoving = false;
         const p = document.getElementById('lovePop');
         if(p.classList.contains('hidden')){
-            p.innerHTML = '<h2 style="color:white; font-family:Playfair Display;">My Beautiful...</h2>';
-            const nicks = ["Sweetheart", "Doraemon", "Kaajukatli", "Gulab Jamun", "Sweety", "Natkhat", "My Other Half", "My Life", "Cutie pie", "My soul", "My heartbeat", "Raajkumarii", "Meri bachii", "My Moon"];
-            nicks.forEach(n => p.innerHTML += `<span class="nickname">${n} • </span>`);
+            // Set Content dynamically including the Button
+            let content = '<div style="text-align:center; padding-bottom:50px;">';
+            content += '<h2 style="color:var(--accent); font-family:Playfair Display; font-size:2.5em; margin-bottom:30px; text-shadow:0 0 10px #000;">The sweet nicknames of you...</h2>';
+            nicknames.forEach(n => {
+                content += `<span class="nickname">${n} • </span>`;
+            });
+            content += '<br><br><button class="btn glow" style="font-size:1.2em;" onclick="openVerses()">Read My Verses 📜</button>';
+            content += '<br><button class="btn" style="margin-top:20px; font-size:0.8em;" onclick="toggleLovePop()">Close ✖</button></div>';
+            
+            p.innerHTML = content;
             p.classList.remove('hidden');
-            document.getElementById('versesBtn').classList.remove('hidden');
-        } else p.classList.add('hidden');
+        } else {
+            p.classList.add('hidden');
+        }
     }
 
-    function openVerses() { document.getElementById('versesModal').classList.remove('hidden'); showPoem(); }
+    function openVerses() { 
+        document.getElementById('lovePop').classList.add('hidden'); // Close nickname overlay
+        document.getElementById('versesModal').classList.remove('hidden'); 
+        showPoem(); 
+    }
 
     function showPoem() {
         const p = poems[currentPoemIdx];
-        document.getElementById('poemContent').innerHTML = `<h2 style="text-align:center; color:#441111">${p.title}</h2><div style="max-height:50vh; overflow-y:auto;">${p.content}</div>`;
-        const b = document.getElementById('poemActionBtn');
+        document.getElementById('poemTextBody').innerHTML = `<h2 style="text-align:center;">${p.title}</h2><p>${p.content}</p>`;
+        const b = document.getElementById('poemAction');
         if(currentPoemIdx < poems.length - 1) {
             b.innerText = "Next Verse ➔";
-            b.onclick = () => { currentPoemIdx++; showPoem(); document.querySelector('.parchment-card').scrollTop = 0; };
+            b.onclick = () => { currentPoemIdx++; showPoem(); document.querySelector('.parchment-card').scrollTop=0; };
         } else {
             b.innerText = "A Question For You... 💌";
             b.onclick = () => { document.getElementById('versesModal').classList.add('hidden'); showQuestion(1); };
@@ -336,46 +361,62 @@ function updateCountdown(target) {
         document.getElementById('qPage'+n).classList.remove('hidden');
     }
 
-    function startFinalSequence() {
+    async function startFinalSequence() {
         document.getElementById('qPage2').classList.add('hidden');
         document.getElementById('finalLovePage').classList.remove('hidden');
         const delay = ms => new Promise(r => setTimeout(r, ms));
-        async function run() {
-            document.getElementById('dkLogoFinal').style.opacity = 1; await delay(1000);
-            document.getElementById('lineL').style.width = "40%"; document.getElementById('lineR').style.width = "40%"; await delay(1000);
-            document.getElementById('tagB').style.opacity = 1; document.getElementById('tagM').style.opacity = 1; await delay(1000);
-            document.getElementById('lineDL').style.height = "120px"; document.getElementById('lineDR').style.height = "120px"; await delay(1000);
-            document.getElementById('n16').style.opacity = 1; document.getElementById('n20').style.opacity = 1; await delay(1000);
-            document.getElementById('lineML').style.width = "40%"; document.getElementById('lineMR').style.width = "40%"; await delay(1000);
-            document.getElementById('d21').style.opacity = 1; await delay(1500);
-            document.getElementById('finalContentArea').classList.remove('hidden');
-            document.getElementById('longWish').innerText = "Deepika, as you have achieved 18th year of your life, I hope that you will be more determined to your future and will stay healthy from all the health prblms that you r facing rn, and you will climb up the ladder of success with comfort. Maybe by the 20th birthday, you'll be a bit less ziddi (just 1% less?), but you'll always be my flower. Here's to our infinite future! 🧿🧗‍♀️💖";
-        }
-        run();
+
+        // Animation Sequence
+        document.getElementById('geoLogo').style.opacity = 1; await delay(1000);
+        
+        // Lines sideways
+        document.getElementById('lSideL').style.width = "40%"; document.getElementById('lSideR').style.width = "40%"; await delay(1000);
+        document.getElementById('txtBihar').style.opacity = 1; document.getElementById('txtMaha').style.opacity = 1; await delay(1000);
+        
+        // Lines down
+        document.getElementById('lDownL').style.height = "150px"; document.getElementById('lDownR').style.height = "150px"; await delay(1000);
+        document.getElementById('txt16').style.opacity = 1; document.getElementById('txt20').style.opacity = 1; await delay(1000);
+        
+        // Lines meeting
+        document.getElementById('lMeetL').style.width = "40%"; document.getElementById('lMeetR').style.width = "40%"; await delay(1000);
+        document.getElementById('meetFinal').style.opacity = 1; await delay(1500);
+
+        // Header appears AFTER Map
+        document.getElementById('ilyTop').style.opacity = 1; await delay(1000);
+
+        // Wish Box
+        document.getElementById('finalWishBox').style.opacity = 1;
+        document.getElementById('wishText').innerHTML = `
+            Deepika, as you have achieved 18th year of your life, I hope that you will be more determined to your future and will stay healthy from all the health prblms that you r facing rn, and you will climb up the ladder of success with comfort.<br><br>
+            <span class="hindi-poem" style="color:#5a1a1a;">तुम मेरी वो फूल हो जिसकी चमक कभी फीकी नहीं पड़ती। बस हमेशा ऐसी ही रहना, थोड़ी सी जिद्दी और पूरी तरह मेरी।</span><br><br>
+            Looking forward to our together future! 🧿🧗‍♀️💖
+        `;
     }
 
     function createStars() {
         const container = document.getElementById('starsContainer');
-        for(let i=0; i<50; i++) {
+        for(let i=0; i<60; i++) {
             const s = document.createElement('div'); s.className = 'star';
             s.style.width = s.style.height = Math.random()*3 + 'px';
             s.style.left = Math.random()*100 + 'vw';
+            s.style.animationDelay = Math.random()*2 + 's';
             container.appendChild(s);
         }
     }
 
     function spawnBalloons() {
         setInterval(() => {
-            const b = document.createElement('div'); b.className = 'balloon';
-            b.style.left = Math.random() * 100 + 'vw';
-            b.style.backgroundColor = ['#ff4e50','#ffd700','#ff9a9e','#ffffff'][Math.floor(Math.random()*4)];
-            document.body.appendChild(b);
-            setTimeout(() => b.remove(), 7000);
-        }, 800);
+            const b = document.createElement('div'); b.style.position = 'fixed';
+            b.style.bottom = '-100px'; b.style.left = Math.random()*100+'vw';
+            b.style.width = '50px'; b.style.height = '70px'; b.style.background = '#ff4e50';
+            b.style.borderRadius = '50%'; b.style.opacity = '0.7'; b.style.zIndex = '999';
+            b.style.transition = '8s linear'; document.body.appendChild(b);
+            setTimeout(() => { b.style.transform = 'translateY(-120vh)'; }, 100);
+            setTimeout(() => b.remove(), 8000);
+        }, 1000);
     }
 
-    function toggleLock() { document.getElementById('funnyLock').classList.toggle('hidden'); }
-    function checkFunnyPass() { if(document.getElementById('funnyPass').value === "Let's Deep Dive") startSection(2); else alert("Wrong code! 🤫"); }
+    function checkFunnyPass() { if(document.getElementById('funnyPass').value === "Let's Deep Dive") startSection(2); else alert("Wrong code! Ask Deepika for pass 🤫☠️"); }
 </script>
 </body>
-                                                                                                   </html>
+                </html>
